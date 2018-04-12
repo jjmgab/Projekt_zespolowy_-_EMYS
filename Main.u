@@ -1,9 +1,9 @@
 /*
- * MyBehaviour: Main graph implementation.
+ * Main: Main graph implementation.
  *
  * Load this file in your server to run the graph.
  *
- * Created: czw. 12. kwi 09:46:43 2018
+ * Created: czw. 12. kwi 11:17:38 2018
  *      by: Gostai Studio 2.7
  *
  * WARNING! All changes made in this file will be lost!
@@ -13,29 +13,29 @@
 // Load urbiscript file.
 load("urbi/fsm.u");
 
-//#line 16 "MyBehaviourGostai Studio 2.7"
+//#line 16 "MainGostai Studio 2.7"
 
 /*************************
  * Create the root state *
  *************************/
 
 //Clean previous code
-if (hasLocalSlot("_root_MyBehaviour_1"))
+if (hasLocalSlot("_root_Main_1"))
   if (Object.hasLocalSlot("removeLocalSlot"))
-    removeLocalSlot("_root_MyBehaviour_1")
+    removeLocalSlot("_root_Main_1")
   else
-    removeSlot("_root_MyBehaviour_1");
+    removeSlot("_root_Main_1");
 
-var _root_MyBehaviour_1 = fsm.State.new("_root_MyBehaviour_1");
-_root_MyBehaviour_1.'$params_dict' = Dictionary.new();
-var _root_MyBehaviour_1._nodes_ = Object.new;
+var _root_Main_1 = fsm.State.new("_root_Main_1");
+_root_Main_1.'$params_dict' = Dictionary.new();
+var _root_Main_1._nodes_ = Object.new;
 
 /**********************
  * States declaration *
  **********************/
 
 //START state declaration
-var _root_MyBehaviour_1._nodes_.START = fsm.State.create_("_root_MyBehaviour_1._nodes_.START", _root_MyBehaviour_1,
+var _root_Main_1._nodes_.START = fsm.State.create_("_root_Main_1._nodes_.START", _root_Main_1,
 function() {
 //#push 1 "START"
 //////////////////////////////////////////////////////////////// 
@@ -75,10 +75,10 @@ if (!hasSlot("counter")) var Global.counter = 0;
 //Code executed after leaving the node
 
 //#pop
-}, false, [11.759, 153.37]);
+}, false, [3.46252, 151.741]);
 
 //Unnamed state declaration
-var _root_MyBehaviour_1._nodes_.Unnamed = fsm.State.create_("_root_MyBehaviour_1._nodes_.Unnamed", _root_MyBehaviour_1,
+var _root_Main_1._nodes_.Unnamed = fsm.State.create_("_root_Main_1._nodes_.Unnamed", _root_Main_1,
 function() {
 //#push 1 "Unnamed"
 t:{
@@ -104,15 +104,15 @@ g:robot.competency.ActAlive(true),
 //Code executed after leaving the node
 
 //#pop
-}, false, [338.067, 217.472]);
+}, false, [433.528, 238.354]);
 
 //Waiting state declaration
-var _root_MyBehaviour_1._nodes_.Waiting = fsm.State.create_("_root_MyBehaviour_1._nodes_.Waiting", _root_MyBehaviour_1._nodes_.Unnamed,
+var _root_Main_1._nodes_.Waiting = fsm.State.create_("_root_Main_1._nodes_.Waiting", _root_Main_1._nodes_.Unnamed,
 function() {
 //#push 1 "Waiting"
 echo("Waiting...");
 
-waituntil(robot.competency.WaitForCall())|
+waituntil(robot.competency.cWaitForCall())|
 Global.trans="found";
 
 //#pop
@@ -133,7 +133,7 @@ Global.trans = "";
 }, false, [-126.208, -15.184]);
 
 //Compliment state declaration
-var _root_MyBehaviour_1._nodes_.Compliment = fsm.State.create_("_root_MyBehaviour_1._nodes_.Compliment", _root_MyBehaviour_1._nodes_.Unnamed,
+var _root_Main_1._nodes_.Compliment = fsm.State.create_("_root_Main_1._nodes_.Compliment", _root_Main_1._nodes_.Unnamed,
 function() {
 //#push 1 "Compliment"
 robot.body.neck.head.Say("Jeste\xc5\x9b bardzo przystojny", 4, 0);
@@ -154,23 +154,22 @@ robot.body.neck.head.Say("Jeste\xc5\x9b bardzo przystojny", 4, 0);
 //Code executed after leaving the node
 
 //#pop
-}, false, [50.698, 88.3117]);
+}, false, [203.698, 69.3117]);
 
 //Called state declaration
-var _root_MyBehaviour_1._nodes_.Called = fsm.State.create_("_root_MyBehaviour_1._nodes_.Called", _root_MyBehaviour_1._nodes_.Unnamed,
+var _root_Main_1._nodes_.Called = fsm.State.create_("_root_Main_1._nodes_.Called", _root_Main_1._nodes_.Unnamed,
 function() {
 //#push 1 "Called"
-var ret = robot.competency.AskForBasic("Co tam?");
+var ret = robot.competency.cAskForBasic("Co tam?");
+
 echo(ret);
 if (ret=="COMPLIMENT")
-{
-	Global.trans = "next";
-}
-else
-{	
-	robot.body.neck.head.Say("okej", 4, 0);
+	Global.trans = "compliment"
+else if(ret=="TIME")
+	Global.trans = "czas"
+else
+	//robot.body.neck.head.Say("okej", 4, 0);
 	Global.trans = "back";
-};
 //#pop
 }
 , false
@@ -188,29 +187,54 @@ else
 //#pop
 }, false, [95.3104, -102.758]);
 
+//Unnamed_2 state declaration
+var _root_Main_1._nodes_.Unnamed_2 = fsm.State.create_("_root_Main_1._nodes_.Unnamed_2", _root_Main_1._nodes_.Unnamed,
+function() {
+//#push 1 "Unnamed_2"
+robot.dialogue.SayTime();
+
+//#pop
+}
+, false
+, 12
+, function() {
+//#push 1 "Unnamed_2.enter"
+//Code executed before entering the node
+
+//#pop
+}
+, function() {
+//#push 1 "Unnamed_2.leave"
+//Code executed after leaving the node
+
+//#pop
+}, false, [5.64864, -202.435]);
+
 /***************************
  * Transitions declaration *
  ***************************/
-fsm.Transition.create_(_root_MyBehaviour_1._nodes_.Unnamed, _root_MyBehaviour_1._nodes_.Waiting, _root_MyBehaviour_1._nodes_.Called, "Global.trans == \"found\"", "_root_MyBehaviour_1._nodes_.Transition_2");
-fsm.Transition.create_(_root_MyBehaviour_1._nodes_.Unnamed, _root_MyBehaviour_1._nodes_.Compliment, _root_MyBehaviour_1._nodes_.Waiting, "done?", "_root_MyBehaviour_1._nodes_.Transition_3");
-fsm.Transition.create_(_root_MyBehaviour_1._nodes_.Unnamed, _root_MyBehaviour_1._nodes_.Called, _root_MyBehaviour_1._nodes_.Waiting, "Global.trans == \"back\"", "_root_MyBehaviour_1._nodes_.Transition_4");
-fsm.Transition.create_(_root_MyBehaviour_1._nodes_.Unnamed, _root_MyBehaviour_1._nodes_.Called, _root_MyBehaviour_1._nodes_.Compliment, "Global.trans == \"next\"", "_root_MyBehaviour_1._nodes_.Transition_5");
-fsm.Transition.create_(_root_MyBehaviour_1, _root_MyBehaviour_1._nodes_.START, _root_MyBehaviour_1._nodes_.Unnamed, "done?", "_root_MyBehaviour_1._nodes_.Transition");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Waiting, _root_Main_1._nodes_.Called, "Global.trans == \"found\"", "_root_Main_1._nodes_.Transition_2");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Compliment, _root_Main_1._nodes_.Waiting, "done?", "_root_Main_1._nodes_.Transition_3");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Waiting, "Global.trans == \"back\"", "_root_Main_1._nodes_.Transition_4");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Compliment, "Global.trans == \"compliment\"", "_root_Main_1._nodes_.Transition_5");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Unnamed_2, "Global.trans == \"czas\"", "_root_Main_1._nodes_.Transition_6");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Unnamed_2, _root_Main_1._nodes_.Waiting, "done?", "_root_Main_1._nodes_.Transition_7");
+fsm.Transition.create_(_root_Main_1, _root_Main_1._nodes_.START, _root_Main_1._nodes_.Unnamed, "done?", "_root_Main_1._nodes_.Transition");
 
 
-var _root_MyBehaviour_1.enterChan = Channel.new("enteringNode");
-var _root_MyBehaviour_1.enterChan.lobby = getSlot("lobby");
-at(_root_MyBehaviour_1.enteringNode?(var id)) _root_MyBehaviour_1.enterChan << ["_root_MyBehaviour_1", id.name];
-var _root_MyBehaviour_1.leaveChan = Channel.new("leavingNode");
-var _root_MyBehaviour_1.leaveChan.lobby = getSlot("lobby");
-at(_root_MyBehaviour_1.leavingNode?(var id)) _root_MyBehaviour_1.leaveChan << ["_root_MyBehaviour_1", id.name];
-var _root_MyBehaviour_1.transitingChan = Channel.new("transiting");
-var _root_MyBehaviour_1.transitingChan.lobby = getSlot("lobby");
-at(_root_MyBehaviour_1.transiting?(var node, var trans)) _root_MyBehaviour_1.transitingChan << ["_root_MyBehaviour_1", trans.name];
-var _root_MyBehaviour_1.freezeChan = Channel.new("frozen");
-var _root_MyBehaviour_1.freezeChan.lobby = getSlot("lobby");
-at(_root_MyBehaviour_1.graphFrozen?()) _root_MyBehaviour_1.freezeChan << "_root_MyBehaviour_1";
+var _root_Main_1.enterChan = Channel.new("enteringNode");
+var _root_Main_1.enterChan.lobby = getSlot("lobby");
+at(_root_Main_1.enteringNode?(var id)) _root_Main_1.enterChan << ["_root_Main_1", id.name];
+var _root_Main_1.leaveChan = Channel.new("leavingNode");
+var _root_Main_1.leaveChan.lobby = getSlot("lobby");
+at(_root_Main_1.leavingNode?(var id)) _root_Main_1.leaveChan << ["_root_Main_1", id.name];
+var _root_Main_1.transitingChan = Channel.new("transiting");
+var _root_Main_1.transitingChan.lobby = getSlot("lobby");
+at(_root_Main_1.transiting?(var node, var trans)) _root_Main_1.transitingChan << ["_root_Main_1", trans.name];
+var _root_Main_1.freezeChan = Channel.new("frozen");
+var _root_Main_1.freezeChan.lobby = getSlot("lobby");
+at(_root_Main_1.graphFrozen?()) _root_Main_1.freezeChan << "_root_Main_1";
 // Start code.
-detach(_root_MyBehaviour_1.enter_());
+detach(_root_Main_1.enter_());
 
-// End of graph implementation `_root_MyBehaviour_1'.
+// End of graph implementation `_root_Main_1'.

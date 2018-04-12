@@ -29,15 +29,15 @@ do(Global) {
  
   do (robot.competency) {
   
-    function ActAlive(vision_config) 		{call.a_RAlive(vision_config);};
-    function AskYesNo(question) 		{call.d_AskYesNo(question);};
-    function AskForBasic(question)		{call.d_AskForBasic(question);};
-    function TakePhoto() 			{call.b_RTakePhoto();};
-    function WaitForCall()			{call.d_WaitForCall();};
+    function cActAlive(vision_config) 		{call.a_RAlive(vision_config);};
+    function cAskYesNo(question) 		{call.d_AskYesNo(question);};
+    function cAskForBasic(question)		{call.d_AskForBasic(question);};
+    function cTakePhoto() 			{call.b_RTakePhoto();};
+    function cWaitForCall()			{call.d_WaitForCall();};
   };
     
     
-  
+ /* 
   function a_RAlive(_config){
   
     var _error = false;
@@ -137,11 +137,9 @@ do(Global) {
       },
     }, // t_follow6:
   };
-  
+  */
  
- 
- 
-  
+  /*
   function a_RBackgroundReaction(_config){
     
   
@@ -214,10 +212,10 @@ do(Global) {
       ///////////////////////////////////////////////////
     }, // t_follow6:
   };
+  */
   
   
-  
-  
+  /*
   function a_RFollowPerson(_config){
   
     var _error = false;
@@ -274,7 +272,9 @@ do(Global) {
       /////////////////////////////////////////////////// 
     }, // t_follow:
   };
+  */
   
+  /*
   function d_AskYesNo(question) {
     robot.audio.recognition.pause = true;
     robot.audio.recognition.resultTag="";
@@ -312,6 +312,7 @@ do(Global) {
     robot.audio.player.Play(_uFilesDir+"sounds/samples/down_double_beep.mp3");
     return "TIMEOUT";
   };
+  */
   
   function d_AskForBasic(question){
     robot.audio.recognition.pause = true;
@@ -321,7 +322,8 @@ do(Global) {
     //
     robot.audio.recognition.LoadGrammar(_uFilesDir+"grammars/BasicPL.grxml"); 
     // 
-    robot.body.neck.head.Say(question, 4, 0);
+    robot.body.neck.head.Say(question, 4, 0);
+
     robot.audio.recognition.pause = false;
     
     
@@ -362,7 +364,7 @@ do(Global) {
     robot.audio.player.Play(_uFilesDir+"sounds/samples/down_double_beep.mp3");
     return false;
   };
-
+/*
   function b_RTakePhoto(){
       
     
@@ -395,7 +397,7 @@ do(Global) {
     robot.screen.CreateBlack();
     robot.screen.ScaleImage(robot.video.photo.image,0.5,0.5,1,0.5);
   };
- 
+ */
   
 
 
