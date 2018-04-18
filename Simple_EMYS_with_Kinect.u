@@ -29,6 +29,16 @@ do(Global) {
  
   do (robot.competency) {
   
+  //FaceRecognition
+  function LearnFace(name)			{call.b_RLearnFace(name);};
+  function CheckFace()			{call.b_RCheckFace();};
+
+  
+  //Emotions
+  
+   function BehaveSurprise() 				{call.b_RBehaveSurprise();};
+   function BehaveHappy() 				{call.b_RBehaveHappy();};
+  //
     function cActAlive(vision_config) 		{call.a_RAlive(vision_config);};
     function cAskYesNo(question) 		{call.d_AskYesNo(question);};
     function cAskForBasic(question)		{call.d_AskForBasic(question);};
@@ -274,6 +284,12 @@ do(Global) {
   };
   */
   
+   
+  
+
+
+
+  
   /*
   function d_AskYesNo(question) {
     robot.audio.recognition.pause = true;
@@ -398,10 +414,110 @@ do(Global) {
     robot.screen.ScaleImage(robot.video.photo.image,0.5,0.5,1,0.5);
   };
  */
+   /////////////////////////////////////////////////////////
+  //	Emotions
+  /////////////////////////////////////////////////////////
+  function b_RBehaveHappy(){
+    robot.body.arm.MoveSideSide(1.5)&
+    {
+      robot.body.neck.head.BehaveJoy(10,1.5);
+    } & {
+      robot.body.neck.head.MoveLeft(3,0.5);
+      robot.body.neck.head.MoveRight(2,0.3);
+      robot.body.neck.head.MoveLeft(2,0.2);
+      robot.body.neck.head.MoveRight(3,0.5);
+      robot.body.neck.head.MoveLeft(1,0.3);
+      robot.body.neck.head.MoveRight(1,0.5);
+      robot.body.neck.head.MoveRight(0,0.5);
+    };
+  };
+
+  function b_RBehaveSurprise() {
+    robot.body.arm.hand.MoveOpen(1)&
+    robot.body.arm.MoveSideSide(1),
+    robot.body.neck.head.BehaveSurprise(10,3);
+  };
   
+  
+   /////////////////////////////////////////////////////////
+  //	FaceRecognition
+  /////////////////////////////////////////////////////////
+  function  b_RLearnFace(name){
 
+    var _error = false;
+    
+    if (!robot.hasLocalSlot("ml")) {
+      echo("ERROR: No mashine learning component in the robot structure!");
+      _error = true;
+    };
+    if (!robot.hasLocalSlot("video")) {
+      echo("ERROR: No video component in the robot structure!");
+      _error = true;
+    };
+    
+    if (_error) return false;
+    
+    if (!robot.ml.hasLocalSlot("faceLearning")) {
+      echo("ERROR: No face learning module in the robot structure!");
+      _error = true;
+    };
+        
+    if (!robot.video.hasLocalSlot("humanDetector")) {
+      echo("ERROR: No video human detector component in the robot structure!");
+      _error = true;
+    };
+    
+    if (_error) return false;
+    
+    
+    g:loop{
+      if (robot.video.humanDetector.head.visible)  robot.ml.faceLearning.Learn(robot.video.humanDetector.head.image, name); 
+      sleep(0.02);
+    },
+    
+    sleep(3);
+    g.stop;
+    return robot.ml.faceLearning.UpdateDatabase(80);
+    robot.ml.faceLearning.threshold=robot.ml.faceLearning.threshold*2;
+  };
+  
+  
+  
+  function  b_RCheckFace(){
 
-
+    var _error = false;
+    
+    if (!robot.hasLocalSlot("ml")) {
+      echo("ERROR: No mashine learning component in the robot structure!");
+      _error = true;
+    };
+    if (!robot.hasLocalSlot("video")) {
+      echo("ERROR: No video component in the robot structure!");
+      _error = true;
+    };
+    
+    if (_error) return "failed";
+    
+    if (!robot.ml.hasLocalSlot("faceLearning")) {
+      echo("ERROR: No face learning module in the robot structure!");
+      _error = true;
+    };
+        
+    if (!robot.video.hasLocalSlot("humanDetector")) {
+      echo("ERROR: No video human detector component in the robot structure!");
+      _error = true;
+    };
+    
+    if (_error) return "failed";
+    
+      
+    if (robot.video.humanDetector.torso.visible)
+    {
+      return robot.ml.faceLearning.Check(robot.video.humanDetector.head.image);
+    } else {
+      return "failed";
+    };
+  };
   echo("OK: EMYS behaviours added.");
 
 };
