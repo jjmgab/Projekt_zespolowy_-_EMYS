@@ -3,7 +3,7 @@
  *
  * Load this file in your server to run the graph.
  *
- * Created: czw. 12. kwi 11:17:38 2018
+ * Created: Œr 18. kwi 20:14:13 2018
  *      by: Gostai Studio 2.7
  *
  * WARNING! All changes made in this file will be lost!
@@ -75,7 +75,7 @@ if (!hasSlot("counter")) var Global.counter = 0;
 //Code executed after leaving the node
 
 //#pop
-}, false, [3.46252, 151.741]);
+}, false, [-174.172, -44.1536]);
 
 //Unnamed state declaration
 var _root_Main_1._nodes_.Unnamed = fsm.State.create_("_root_Main_1._nodes_.Unnamed", _root_Main_1,
@@ -104,7 +104,7 @@ g:robot.competency.ActAlive(true),
 //Code executed after leaving the node
 
 //#pop
-}, false, [433.528, 238.354]);
+}, false, [989.932, 172.439]);
 
 //Waiting state declaration
 var _root_Main_1._nodes_.Waiting = fsm.State.create_("_root_Main_1._nodes_.Waiting", _root_Main_1._nodes_.Unnamed,
@@ -130,7 +130,7 @@ Global.trans = "";
 //Code executed after leaving the node
 
 //#pop
-}, false, [-126.208, -15.184]);
+}, false, [-123.022, -15.184]);
 
 //Compliment state declaration
 var _root_Main_1._nodes_.Compliment = fsm.State.create_("_root_Main_1._nodes_.Compliment", _root_Main_1._nodes_.Unnamed,
@@ -196,7 +196,7 @@ robot.dialogue.SayTime();
 //#pop
 }
 , false
-, 12
+, 8
 , function() {
 //#push 1 "Unnamed_2.enter"
 //Code executed before entering the node
@@ -208,7 +208,318 @@ robot.dialogue.SayTime();
 //Code executed after leaving the node
 
 //#pop
-}, false, [5.64864, -202.435]);
+}, false, [8.83507, -202.435]);
+
+//Simon_says state declaration
+var _root_Main_1._nodes_.Simon_says = fsm.State.create_("_root_Main_1._nodes_.Simon_says", _root_Main_1,
+function() {
+//#push 1 "Simon_says"
+t:{
+	robot.video.Run,
+	robot.audio.Run,
+},
+
+robot.video.humanDetector.enable=true;
+
+l:every(1s) {
+	echo(robot.video.humanDetector.visible);
+},
+//#pop
+}
+, false
+, 16
+, function() {
+//#push 1 "Simon_says.enter"
+//Code executed before entering the node
+
+//#pop
+}
+, function() {
+//#push 1 "Simon_says.leave"
+//Code executed after leaving the node
+
+//#pop
+}, false, [209.679, 309.856]);
+
+//start state declaration
+var _root_Main_1._nodes_.start = fsm.State.create_("_root_Main_1._nodes_.start", _root_Main_1._nodes_.Simon_says,
+function() {
+//#push 1 "start"
+if (!hasSlot("points"))
+  var Global.points = 0
+else 
+  Global.points = 0;
+
+if (!hasSlot("availablePatterns"))
+  var Global.availablePatterns = []
+else
+  Global.availablePatterns = [];
+
+if (!hasSlot("pattern")) 
+  var Global.pattern = []
+else 
+  Global.pattern = [];
+	
+if (!hasSlot("currentPattern")) 
+  var Global.currentPattern = []
+else 
+  Global.currentPattern = [];
+	
+Global.availablePatterns += ["right", "left", "both"];
+
+robot.audio.speech.Say("Uwaga. Sta\xc5\x84 tak, \xc5\xbcebym Ci\xc4\x99 widzia\xc5\x82", 0);
+sleep(1s);
+
+{
+  waituntil(robot.video.humanDetector.visible~1s);
+  robot.audio.speech.Say("Super! Teraz Ci\xc4\x99 widz\xc4\x99.", 0);
+	Global.trans = "iSee";
+},
+
+//#pop
+}
+, true
+, 17
+, function() {
+//#push 1 "start.enter"
+//Code executed before entering the node
+Global.trans = "";
+//#pop
+}
+, function() {
+//#push 1 "start.leave"
+//Code executed after leaving the node
+
+//#pop
+}, false, [-158.771, -239.302]);
+
+//addToPattern state declaration
+var _root_Main_1._nodes_.addToPattern = fsm.State.create_("_root_Main_1._nodes_.addToPattern", _root_Main_1._nodes_.Simon_says,
+function() {
+//#push 1 "addToPattern"
+Global.pattern.insertBack(Global.availablePatterns[random(Global.availablePatterns.size())]);
+//#pop
+}
+, false
+, 18
+, function() {
+//#push 1 "addToPattern.enter"
+//Code executed before entering the node
+Global.trans = "";
+//#pop
+}
+, function() {
+//#push 1 "addToPattern.leave"
+//Code executed after leaving the node
+
+//#pop
+}, false, [159.685, -217.428]);
+
+//sayPattern state declaration
+var _root_Main_1._nodes_.sayPattern = fsm.State.create_("_root_Main_1._nodes_.sayPattern", _root_Main_1._nodes_.Simon_says,
+function() {
+//#push 1 "sayPattern"
+robot.audio.speech/*body.neck.head*/.Say("Uwaga, s\xc5\x82uchaj!",0);/* 4, 0);*/
+sleep(1s);
+
+for (var move : Global.pattern) {
+	switch (move) {
+		case "right": robot.audio.speech/*body.neck.head*/.Say("prawa",0);/* 4, 0);*/
+		case "left": robot.audio.speech/*body.neck.head*/.Say("lewa",0);/* 4, 0);*/
+		case "both": robot.audio.speech/*body.neck.head*/.Say("obie",0);/* 4, 0);*/
+	};
+}|
+
+Global.trans="said"|
+sleep(1s);
+//#pop
+}
+, false
+, 19
+, function() {
+//#push 1 "sayPattern.enter"
+//Code executed before entering the node
+Global.trans = "";
+//#pop
+}
+, function() {
+//#push 1 "sayPattern.leave"
+//Code executed after leaving the node
+
+//#pop
+}, false, [283.912, 59.9174]);
+
+//letsMove state declaration
+var _root_Main_1._nodes_.letsMove = fsm.State.create_("_root_Main_1._nodes_.letsMove", _root_Main_1._nodes_.Simon_says,
+function() {
+//#push 1 "letsMove"
+var Rhand =[];
+var Lhand =[];
+var Head =[];
+var move = "";
+
+var wellDone = ["Super!", "Fantastycznie!", "Brawo!", "\xc5\x81a\xc5\x82!"];
+
+currentPattern =[];
+var done = false;
+var left = false;
+var right = false;
+var finishedTalking = true;
+var add = false;
+
+var moveCount = Global.pattern.size();
+var remainingMoves = moveCount - Global.counter;
+
+robot.audio.speech.Say("Teraz Ty! Powt\xc3\xb3rz to, co powiedzia\xc5\x82em!", 0)|
+sleep(500ms);
+
+loop{
+waituntil(finishedTalking)|
+left = false|
+right = false|
+
+	// get skeleton positions
+	Rhand = robot.video.kinect.skeletonJointPosition(robot.video.humanDetector.user,11)&	
+	Lhand = robot.video.kinect.skeletonJointPosition(robot.video.humanDetector.user,7)&
+	Head =  robot.video.kinect.skeletonJointPosition(robot.video.humanDetector.user,3)|
+	
+	// check if hand is above head
+	if ((Head.size==3)&&(Rhand.size==3)&&(Rhand[1]>Head[1])) 
+		right = true|
+	if ((Head.size==3)&&(Lhand.size==3)&&(Lhand[1]>Head[1])) 
+		left = true|
+	
+	if (right || left)
+		done = true
+	else
+		done = false|
+		
+	sleep(100ms);
+},
+
+
+at (done){
+moveCount = Global.pattern.size()|
+
+if (left and not right) move = "left"|
+if (not left and right) move = "right"|
+if (left and  right) move = "both"|
+
+finishedTalking = false|
+Global.counter += 1|
+robot.audio.speech.Say(move, 0)|
+done = false|
+Global.currentPattern.insertBack(move)|
+move=""|
+robot.audio.speech/*body.neck.head*/.Say(wellDone[random(wellDone.size())], 0/*4, 0*/)|
+sleep(500ms)|
+
+
+	if (Global.counter >= moveCount)
+	  Global.trans = "done"|
+
+finishedTalking = true;
+},
+//#pop
+}
+, false
+, 20
+, function() {
+//#push 1 "letsMove.enter"
+//Code executed before entering the node
+Global.trans = "";
+Global.counter = 0;
+Global.currentPattern.clear();
+//#pop
+}
+, function() {
+//#push 1 "letsMove.leave"
+//Code executed after leaving the node
+
+//#pop
+}, false, [136.984, 227.381]);
+
+//checkIfDoneWell state declaration
+var _root_Main_1._nodes_.checkIfDoneWell = fsm.State.create_("_root_Main_1._nodes_.checkIfDoneWell", _root_Main_1._nodes_.Simon_says,
+function() {
+//#push 1 "checkIfDoneWell"
+if (Global.currentPattern == Global.pattern) Global.trans = "patternGood"
+else Global.trans = "patternBad";
+//#pop
+}
+, false
+, 21
+, function() {
+//#push 1 "checkIfDoneWell.enter"
+//Code executed before entering the node
+Global.trans = "";
+//#pop
+}
+, function() {
+//#push 1 "checkIfDoneWell.leave"
+//Code executed after leaving the node
+
+//#pop
+}, false, [-121.807, 171.987]);
+
+//notOK state declaration
+var _root_Main_1._nodes_.notOK = fsm.State.create_("_root_Main_1._nodes_.notOK", _root_Main_1._nodes_.Simon_says,
+function() {
+//#push 1 "notOK"
+/*
+robot.body.neck.head.Say("Ojej, pomyli\xc5\x82e\xc5\x9b si\xc4\x99!", 4, 0);
+sleep(500ms);
+robot.body.neck.head.Say("Zdoby\xc5\x82e\xc5\x9b " + Global.points + " punkt\xc3\xb3w!", 4, 0);
+*/
+robot.audio.speech.Say("Ojej, pomyli\xc5\x82e\xc5\x9b si\xc4\x99! Zdoby\xc5\x82e\xc5\x9b " + Global.points + " punkt\xc3\xb3w!", 0)|sleep(500ms);
+//#pop
+}
+, false
+, 22
+, function() {
+//#push 1 "notOK.enter"
+//Code executed before entering the node
+Global.trans = "";
+//#pop
+}
+, function() {
+//#push 1 "notOK.leave"
+//Code executed after leaving the node
+
+//#pop
+}, false, [-284.73, -26.362]);
+
+//OK state declaration
+var _root_Main_1._nodes_.OK = fsm.State.create_("_root_Main_1._nodes_.OK", _root_Main_1._nodes_.Simon_says,
+function() {
+//#push 1 "OK"
+/*
+Global.points += 1;
+robot.body.neck.head.Say("Brawo, powt\xc3\xb3rzy\xc5\x82e\xc5\x9b wz\xc3\xb3r dobrze!", 4, 0);
+sleep(500ms);
+robot.body.neck.head.Say("Idziemy dalej!", 4, 0);
+*/
+
+robot.audio.speech.Say("Brawo, powt\xc3\xb3rzy\xc5\x82e\xc5\x9b wz\xc3\xb3r dobrze! Idziemy dalej!", 0)|
+Global.points += 1|
+sleep(500ms)|
+Global.trans = "said";
+//#pop
+}
+, false
+, 23
+, function() {
+//#push 1 "OK.enter"
+//Code executed before entering the node
+Global.trans = "";
+//#pop
+}
+, function() {
+//#push 1 "OK.leave"
+//Code executed after leaving the node
+
+//#pop
+}, false, [-30.9871, -19.2143]);
 
 /***************************
  * Transitions declaration *
@@ -219,7 +530,14 @@ fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called
 fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Compliment, "Global.trans == \"compliment\"", "_root_Main_1._nodes_.Transition_5");
 fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Unnamed_2, "Global.trans == \"czas\"", "_root_Main_1._nodes_.Transition_6");
 fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Unnamed_2, _root_Main_1._nodes_.Waiting, "done?", "_root_Main_1._nodes_.Transition_7");
-fsm.Transition.create_(_root_Main_1, _root_Main_1._nodes_.START, _root_Main_1._nodes_.Unnamed, "done?", "_root_Main_1._nodes_.Transition");
+fsm.Transition.create_(_root_Main_1, _root_Main_1._nodes_.START, _root_Main_1._nodes_.Simon_says, "done?", "_root_Main_1._nodes_.Transition");
+fsm.Transition.create_(_root_Main_1._nodes_.Simon_says, _root_Main_1._nodes_.start, _root_Main_1._nodes_.addToPattern, "Global.trans == \"iSee\"", "_root_Main_1._nodes_.Transition_8");
+fsm.Transition.create_(_root_Main_1._nodes_.Simon_says, _root_Main_1._nodes_.addToPattern, _root_Main_1._nodes_.sayPattern, "done?", "_root_Main_1._nodes_.Transition_9");
+fsm.Transition.create_(_root_Main_1._nodes_.Simon_says, _root_Main_1._nodes_.sayPattern, _root_Main_1._nodes_.letsMove, "Global.trans == \"said\"", "_root_Main_1._nodes_.Transition_10");
+fsm.Transition.create_(_root_Main_1._nodes_.Simon_says, _root_Main_1._nodes_.letsMove, _root_Main_1._nodes_.checkIfDoneWell, "Global.trans == \"done\"", "_root_Main_1._nodes_.Transition_11");
+fsm.Transition.create_(_root_Main_1._nodes_.Simon_says, _root_Main_1._nodes_.checkIfDoneWell, _root_Main_1._nodes_.OK, "Global.trans == \"patternGood\"", "_root_Main_1._nodes_.Transition_12");
+fsm.Transition.create_(_root_Main_1._nodes_.Simon_says, _root_Main_1._nodes_.checkIfDoneWell, _root_Main_1._nodes_.notOK, "Global.trans == \"patternBad\"", "_root_Main_1._nodes_.Transition_13");
+fsm.Transition.create_(_root_Main_1._nodes_.Simon_says, _root_Main_1._nodes_.OK, _root_Main_1._nodes_.addToPattern, "Global.trans == \"said\"", "_root_Main_1._nodes_.Transition_14");
 
 
 var _root_Main_1.enterChan = Channel.new("enteringNode");
