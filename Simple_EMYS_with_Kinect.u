@@ -274,7 +274,7 @@ do(Global) {
   };
   */
   
-  /*
+  
   function d_AskYesNo(question) {
     robot.audio.recognition.pause = true;
     robot.audio.recognition.resultTag="";
@@ -312,7 +312,7 @@ do(Global) {
     robot.audio.player.Play(_uFilesDir+"sounds/samples/down_double_beep.mp3");
     return "TIMEOUT";
   };
-  */
+  
   
   function d_AskForBasic(question){
     robot.audio.recognition.pause = true;
@@ -341,17 +341,20 @@ do(Global) {
   };
   
   function d_WaitForCall(){
+    echo("Jestem");
     robot.audio.recognition.pause = true;
     robot.audio.recognition.resultTag="";
     robot.audio.recognition.result="";
     robot.audio.recognition.ResetGrammar;  
     //
     robot.audio.recognition.LoadGrammar(_uFilesDir+"grammars/BasicPL.grxml"); 
-    // 
+    // 
+    echo("true");
     robot.audio.recognition.pause = false;
-
+    echo("false");
     at (robot.audio.recognition.resultTag=="HELLO")
-    {
+    {
+      echo("uslyszalem");
       robot.audio.recognition.pause = true;
       robot.audio.player.Play(_uFilesDir+"sounds/samples/heard_sound.mp3");
       return true;
@@ -362,6 +365,7 @@ do(Global) {
     waituntil (rec_timeout > 10)|
     robot.audio.recognition.pause = true|
     robot.audio.player.Play(_uFilesDir+"sounds/samples/down_double_beep.mp3");
+
     return false;
   };
 /*

@@ -44,9 +44,9 @@ do (Global) {
   //////////////////////////////////////////////////////
   // SPEECH SYNTHESIS SETTINGS
   // Choose speech synthesies parameters
-  var _Speech_module		= "USpeech_MSP";// Possible speech synthesis modules:		"USpeech_MSP", "USpeech_SAPI"
+  var _Speech_module		= "USpeech_SAPI";// Possible speech synthesis modules:		"USpeech_MSP", "USpeech_SAPI"
   var _Speech_volume		= 100;		// Set the speech volume
-  var _Speech_param		= [0];   
+  var _Speech_param		= [3,6];   
 						// For now [EN, PL, PT]
 						// Choose proper voises from all available voices 
 						// use -> robot.audio.speech.availableVoices;
@@ -451,7 +451,7 @@ do (Global) {
   // Start up file:
   // load your own uFiles ["file1.u","file2.u"], set [] if not
   //
-  var _CompetencyManagerFiles 	= ["Simple_EMYS_with_Kinect.u"];
+  var _CompetencyManagerFiles 	= ["Simple_EMYS_with_Kinect.u","EmysDialogs.u","EmysBehaviours.u"];
   //
   ////////////////////////////////////////////////////////
   //
