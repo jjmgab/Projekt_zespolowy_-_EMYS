@@ -3,7 +3,7 @@
  *
  * Load this file in your server to run the graph.
  *
- * Created: Œr 18. kwi 20:14:13 2018
+ * Created: Cz 19. kwi 09:04:55 2018
  *      by: Gostai Studio 2.7
  *
  * WARNING! All changes made in this file will be lost!
@@ -57,9 +57,7 @@ function() {
   // z.	\xc5\xbc	Z. \xc5\xbb
 	
 
-if (!hasSlot("trans")) var Global.trans = "";
-
-if (!hasSlot("counter")) var Global.counter = 0;
+if (!hasSlot("trans")) var Global.trans = "";
 //#pop
 }
 , true
@@ -220,10 +218,10 @@ t:{
 },
 
 robot.video.humanDetector.enable=true;
+g:robot.competency.ActAlive(true),
 
-l:every(1s) {
-	echo(robot.video.humanDetector.visible);
-},
+if (!hasSlot("counter")) var Global.counter = 0
+else Global.counter = 0;
 //#pop
 }
 , false
@@ -267,12 +265,14 @@ else
 	
 Global.availablePatterns += ["right", "left", "both"];
 
-robot.audio.speech.Say("Uwaga. Sta\xc5\x84 tak, \xc5\xbcebym Ci\xc4\x99 widzia\xc5\x82", 0);
+// robot.audio.speech.Say("Uwaga. Sta\xc5\x84 tak, \xc5\xbcebym Ci\xc4\x99 widzia\xc5\x82", 0);
+robot.body.neck.head.Say("Uwaga. Sta\xc5\x84 tak, \xc5\xbcebym Ci\xc4\x99 widzia\xc5\x82", 4, 0);
 sleep(1s);
 
 {
   waituntil(robot.video.humanDetector.visible~1s);
-  robot.audio.speech.Say("Super! Teraz Ci\xc4\x99 widz\xc4\x99.", 0);
+  // robot.audio.speech.Say("Super! Teraz Ci\xc4\x99 widz\xc4\x99.", 0);
+	robot.body.neck.head.Say("Super! Teraz Ci\xc4\x99 widz\xc4\x99.", 4, 0);
 	Global.trans = "iSee";
 },
 
@@ -320,18 +320,21 @@ var _root_Main_1._nodes_.sayPattern = fsm.State.create_("_root_Main_1._nodes_.sa
 function() {
 //#push 1 "sayPattern"
 robot.audio.speech/*body.neck.head*/.Say("Uwaga, s\xc5\x82uchaj!",0);/* 4, 0);*/
-sleep(1s);
+sleep(500ms);
 
 for (var move : Global.pattern) {
 	switch (move) {
-		case "right": robot.audio.speech/*body.neck.head*/.Say("prawa",0);/* 4, 0);*/
-		case "left": robot.audio.speech/*body.neck.head*/.Say("lewa",0);/* 4, 0);*/
-		case "both": robot.audio.speech/*body.neck.head*/.Say("obie",0);/* 4, 0);*/
+		case "right": // robot.audio.speech/*body.neck.head*/.Say("prawa",0);/* 4, 0);*/
+		robot.body.neck.head.Say("prawa", 4, 0);
+		case "left": // robot.audio.speech/*body.neck.head*/.Say("lewa",0);/* 4, 0);*/
+		robot.body.neck.head.Say("lewa", 4, 0);
+		case "both": // robot.audio.speech/*body.neck.head*/.Say("obie",0);/* 4, 0);*/
+		robot.body.neck.head.Say("obie", 4, 0);
 	};
 }|
 
 Global.trans="said"|
-sleep(1s);
+sleep(500ms);
 //#pop
 }
 , false
@@ -347,7 +350,7 @@ Global.trans = "";
 //Code executed after leaving the node
 
 //#pop
-}, false, [283.912, 59.9174]);
+}, false, [286.01, 59.9174]);
 
 //letsMove state declaration
 var _root_Main_1._nodes_.letsMove = fsm.State.create_("_root_Main_1._nodes_.letsMove", _root_Main_1._nodes_.Simon_says,
@@ -370,7 +373,8 @@ var add = false;
 var moveCount = Global.pattern.size();
 var remainingMoves = moveCount - Global.counter;
 
-robot.audio.speech.Say("Teraz Ty! Powt\xc3\xb3rz to, co powiedzia\xc5\x82em!", 0)|
+//robot.audio.speech.Say("Teraz Ty! Powt\xc3\xb3rz to, co powiedzia\xc5\x82em!", 0)|
+robot.body.neck.head.Say("Teraz Ty! Powt\xc3\xb3rz to, co powiedzia\xc5\x82em!", 4, 0)|
 sleep(500ms);
 
 loop{
@@ -407,11 +411,11 @@ if (left and  right) move = "both"|
 
 finishedTalking = false|
 Global.counter += 1|
-robot.audio.speech.Say(move, 0)|
 done = false|
 Global.currentPattern.insertBack(move)|
 move=""|
-robot.audio.speech/*body.neck.head*/.Say(wellDone[random(wellDone.size())], 0/*4, 0*/)|
+//robot.audio.speech/*body.neck.head*/.Say(wellDone[random(wellDone.size())], 0/*4, 0*/)|
+robot.body.neck.head.Say(wellDone[random(wellDone.size())], 4, 0)|
 sleep(500ms)|
 
 
@@ -460,18 +464,15 @@ Global.trans = "";
 //Code executed after leaving the node
 
 //#pop
-}, false, [-121.807, 171.987]);
+}, false, [-121.807, 174.085]);
 
 //notOK state declaration
 var _root_Main_1._nodes_.notOK = fsm.State.create_("_root_Main_1._nodes_.notOK", _root_Main_1._nodes_.Simon_says,
 function() {
 //#push 1 "notOK"
-/*
-robot.body.neck.head.Say("Ojej, pomyli\xc5\x82e\xc5\x9b si\xc4\x99!", 4, 0);
-sleep(500ms);
-robot.body.neck.head.Say("Zdoby\xc5\x82e\xc5\x9b " + Global.points + " punkt\xc3\xb3w!", 4, 0);
-*/
-robot.audio.speech.Say("Ojej, pomyli\xc5\x82e\xc5\x9b si\xc4\x99! Zdoby\xc5\x82e\xc5\x9b " + Global.points + " punkt\xc3\xb3w!", 0)|sleep(500ms);
+//robot.audio.speech.Say("Ojej, pomy\xc5\x82ka! Zdobyte punkty: " + Global.points, 0)|sleep(500ms);
+
+robot.body.neck.head.Say("Ojej, pomy\xc5\x82ka! Zdobyte punkty: " + Global.points, 4, 0)|sleep(500ms);
 //#pop
 }
 , false
@@ -494,13 +495,13 @@ var _root_Main_1._nodes_.OK = fsm.State.create_("_root_Main_1._nodes_.OK", _root
 function() {
 //#push 1 "OK"
 /*
-Global.points += 1;
-robot.body.neck.head.Say("Brawo, powt\xc3\xb3rzy\xc5\x82e\xc5\x9b wz\xc3\xb3r dobrze!", 4, 0);
-sleep(500ms);
-robot.body.neck.head.Say("Idziemy dalej!", 4, 0);
+robot.audio.speech.Say("Brawo, powt\xc3\xb3rzy\xc5\x82e\xc5\x9b wz\xc3\xb3r dobrze! Idziemy dalej!", 0)|
+Global.points += 1|
+sleep(500ms)|
+Global.trans = "said";
 */
 
-robot.audio.speech.Say("Brawo, powt\xc3\xb3rzy\xc5\x82e\xc5\x9b wz\xc3\xb3r dobrze! Idziemy dalej!", 0)|
+robot.body.neck.head.Say("Brawo, powt\xc3\xb3rzy\xc5\x82e\xc5\x9b wz\xc3\xb3r dobrze! Idziemy dalej!", 4, 0)|
 Global.points += 1|
 sleep(500ms)|
 Global.trans = "said";
