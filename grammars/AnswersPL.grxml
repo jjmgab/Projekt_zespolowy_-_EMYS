@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<grammar version="1.0" xml:lang="pl-PL" root="rootAnswers" tag-format="semantics/1.0-literals" xmlns="http://www.w3.org/2001/06/grammar">
+  <rule id="rootAnswers">
+    <one-of>
+      <item>
+        <ruleref uri="#AnswersList"/>
+      </item>
+      <item>
+        <ruleref uri="#Repeat"/>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="AnswersList" scope="private">
+    <one-of>
+      <item>
+        Wrocław<tag>CORRECT1</tag>
+      </item>
+      <item>
+        Kraków<tag>CORRECT2</tag>
+      </item>
+      <item>
+        Marek<tag>CORRECT3</tag>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="Repeat" scope="private">
+    <tag>REPEAT</tag>
+    <one-of>
+      <item>jeszcze raz</item>
+      <item>jeszcze raz proszę</item>
+      <item>co powiedziałeś</item>
+      <item>o co pytasz</item>
+      <item>słucham</item>
+      <item>powtórz</item>
+      <item>powtórz proszę</item>
+    </one-of>
+  </rule>
+
+</grammar>
