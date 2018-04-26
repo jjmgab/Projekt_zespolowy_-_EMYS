@@ -32,7 +32,7 @@ do(Global) {
     function cAskYesNo(question) 		{call.d_AskYesNo(question);};
     function cAskForBasic(question)		{call.d_AskForBasic(question);};
     function cWaitForCall()			{call.d_WaitForCall();};
-    function WhatShouldRobotDo(work)		{call.c_WhatShouldRobotDo();};
+    function WhatShouldRobotDo(work)		{call.c_WhatShouldRobotDo(work);};
     function cTellStory(story, question, answer){call.d_TellStory(story, question, answer);};
   };
     
@@ -95,14 +95,14 @@ do(Global) {
   };
 
 
-  function c_WhatShouldRobotDo(){
-    if (ret=="COMPLIMENT")
+  function c_WhatShouldRobotDo(work){
+    if (work=="COMPLIMENT")
 	Global.trans = "compliment"
-    else if(ret=="TIME")
+    else if(work=="TIME")
 	Global.trans = "saytime"
-    else if(ret=="PLAY")
+    else if(work=="PLAY")
 	Global.trans = "game"
-    else if(ret=="INTRODUCE")
+    else if(work=="INTRODUCE")
 	Global.trans="introduce"
     else
 	//robot.body.neck.head.Say("okej", 4, 0);
