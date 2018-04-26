@@ -28,7 +28,7 @@ do(Global) {
    
  
   do (robot.competency) {
-  
+  
     function cAskYesNo(question) 		{call.d_AskYesNo(question);};
     function cAskForBasic(question)		{call.d_AskForBasic(question);};
     function cWaitForCall()			{call.d_WaitForCall();};
@@ -107,10 +107,9 @@ do(Global) {
     else
 	//robot.body.neck.head.Say("okej", 4, 0);
 	Global.trans = "back";
-  }
+  };
   
   function d_TellStory(story, question, answer) {
-
     //inicjalizacja rozpoznawania mowy
     robot.audio.recognition.pause = true;
     robot.audio.recognition.resultTag="";
@@ -151,8 +150,8 @@ do(Global) {
     robot.audio.recognition.pause = true|
     robot.audio.player.Play(_uFilesDir+"sounds/samples/down_double_beep.mp3");
     return "TIMEOUT";
-  };
-  
+  };
+  
   
   function d_AskYesNo(question) {
     robot.audio.recognition.pause = true;
