@@ -3,7 +3,7 @@
  *
  * Load this file in your server to run the graph.
  *
- * Created: Cz 26. kwi 10:50:29 2018
+ * Created: Œr 9. maj 22:24:01 2018
  *      by: Gostai Studio 2.7
  *
  * WARNING! All changes made in this file will be lost!
@@ -62,11 +62,13 @@ if (!hasSlot("trans")) var Global.trans = "";
 if (!hasSlot("counter")) var Global.counter = 0;
 
 
-if (!hasSlot("stories")) var Global.stories = ["We Wroc\xc5\x82awiu blablabla","W Krakowie blablabla", "Blablabla Marek mia\xc5\x82 wynie\xc5\x9b\xc4\x87 \xc5\x9bmieci"];
+if (!hasSlot("stories")) var Global.stories = ["We Wroc\xc5\x82awiu mie\xc5\x9bci si\xc4\x99 najlepsza Politechnika w kraju.","W Krakowie znajduje si\xc4\x99 pi\xc4\x99kny zamek kr\xc3\xb3lewski, Wawel.", "Uzbiera\xc5\x82y si\xc4\x99 dwa worki \xc5\x9bmieci, Marek mia\xc5\x82 je ju\xc5\xbc dawno wynie\xc5\x9b\xc4\x87", "Wczoraj w sklepie widzia\xc5\x82em Ani\xc4\x99, star\xc4\x85 kole\xc5\xbcank\xc4\x99 z liceum"];
 
-if (!hasSlot("questions")) var Global.questions = ["Jakie miasto by\xc5\x82o wymienione?", "Jakie miasto by\xc5\x82o wymienione?", "O kim by\xc5\x82a mowa?"];
+if (!hasSlot("questions")) var Global.questions = ["Jakie miasto by\xc5\x82o wymienione?", "Jakie miasto by\xc5\x82o wymienione?", "Jak mia\xc5\x82 na imi\xc4\x99 ch\xc5\x82opak?", "Jak mia\xc5\x82a na imi\xc4\x99 dziewczyna?"];
 
-if (!hasSlot("answers")) var Global.answers = ["Wroc\xc5\x82aw", "Krak\xc3\xb3w", "Marek"];
+if (!hasSlot("answers")) var Global.answers = ["Wroc\xc5\x82aw", "Krak\xc3\xb3w", "Marek", "Ania"];
+
+if (!hasSlot("checkStory")) var Global.checkStory = [false, false, false, false];
 //#pop
 }
 , true
@@ -94,7 +96,7 @@ t:{
 },
 
 
-g:robot.competency.ActAlive(true),
+//g:robot.competency.ActAlive(true),
 
 //#pop
 }
@@ -111,7 +113,7 @@ g:robot.competency.ActAlive(true),
 //Code executed after leaving the node
 
 //#pop
-}, false, [390.636, -251.806]);
+}, false, [541.794, -81.92]);
 
 //Waiting state declaration
 var _root_Main_1._nodes_.Waiting = fsm.State.create_("_root_Main_1._nodes_.Waiting", _root_Main_1._nodes_.Unnamed,
@@ -164,7 +166,8 @@ Global.trans = "";
 var _root_Main_1._nodes_.Compliment = fsm.State.create_("_root_Main_1._nodes_.Compliment", _root_Main_1._nodes_.Unnamed,
 function() {
 //#push 1 "Compliment"
-robot.body.neck.head.Say("Wi\xc4\x99c cho\xc5\xba na piwo", 4, 0);
+//robot.audio.speech/*body.neck.head*/.Say("Wi\xc4\x99c cho\xc5\xba na piwo", 4, 0);
+robot.audio.speech/*body.neck.head*/.Say("Wi\xc4\x99c cho\xc5\xba na piwo", 0);
 
 
 //#pop
@@ -188,7 +191,7 @@ robot.body.neck.head.Say("Wi\xc4\x99c cho\xc5\xba na piwo", 4, 0);
 var _root_Main_1._nodes_.Called = fsm.State.create_("_root_Main_1._nodes_.Called", _root_Main_1._nodes_.Unnamed,
 function() {
 //#push 1 "Called"
-robot.body.neck.head.ExpSmile(10,1)|
+//robot.body.neck.head.ExpSmile(10,1)|
 var ret = robot.competency.cAskForBasic("Co tam?");
 
 echo(ret);
@@ -237,10 +240,27 @@ robot.dialogue.SayTime();
 var _root_Main_1._nodes_.Simon_Says = fsm.State.create_("_root_Main_1._nodes_.Simon_Says", _root_Main_1._nodes_.Unnamed,
 function() {
 //#push 1 "Simon_Says"
+if (!hasSlot("isEmysThere")) var Global.isEmysThere = false
+else Global.isEmysThere = true;
+
 robot.video.humanDetector.enable=true;
 
 if (!hasSlot("counter")) var Global.counter = 0
-else Global.counter = 0;
+else Global.counter = 0;
+
+  /////
+  //
+  // Polish UTF-8 chars - just for quick reference
+  //
+  // a	\xc4\x85  A  \xc4\x84
+  // c	\xc4\x87  C  \xc4\x86
+  // e	\xc4\x99	E  \xc4\x98
+  // l	\xc5\x82 	L  \xc5\x81
+  // n	\xc5\x84 	N  \xc5\x83
+  // o	\xc3\xb3	O  \xc3\x93
+  // s	\xc5\x9b	S  \xc5\x9a
+  // z,	\xc5\xba	Z, \xc5\xb9
+  // z.	\xc5\xbc	Z. \xc5\xbb
 //#pop
 }
 , false
@@ -256,31 +276,45 @@ else Global.counter = 0;
 //Code executed after leaving the node
 
 //#pop
-}, false, [-204.855, -621.167]);
+}, false, [-194.154, -614.479]);
 
 //letsMove state declaration
 var _root_Main_1._nodes_.letsMove = fsm.State.create_("_root_Main_1._nodes_.letsMove", _root_Main_1._nodes_.Simon_Says,
 function() {
 //#push 1 "letsMove"
-var Rhand =[];
-var Lhand =[];
-var Head =[];
-var move = "";
+// TERAZ RUSZA SIE GRACZ
 
-var wellDone = ["Super!", "Fantastycznie!", "Brawo!", "\xc5\x81a\xc5\x82!"];
+// --- Zmienne ---
 
-currentPattern =[];
-var done = false;
-var left = false;
-var right = false;
-var finishedTalking = true;
-var add = false;
+var wellDone = [
+"Super!",
+"Fantastycznie!", 
+"Brawo!", 
+"\xc5\x81a\xc5\x82!" // wow ;)
+];
 
-var moveCount = Global.pattern.size();
-var remainingMoves = moveCount - Global.counter;
+var yourTurn = "Teraz Ty! Podnie\xc5\x9b r\xc4\x99ce w kolejno\xc5\x9bci, jak\xc4\x85 Ci poda\xc5\x82em.";
 
-robot.audio.speech.Say("Teraz Ty! Powt\xc3\xb3rz to, co powiedzia\xc5\x82em!", 0)|
-sleep(500ms);
+
+var Rhand =[];	// prawa reka
+var Lhand =[];	// lewa reka
+var Head =[];		// to nie jest glowa, tylko nasada szyi (tak latwiej odczytac)
+var move = "";	// obecny ruch
+
+Global.currentPattern = [];	// czysci wykonane ruchy
+
+var done = false;						// czy wykonano ruch
+var left = false;						// czy podniesiono LEWA reke
+var right = false;					// czy podniesiono PRAWA reke
+var finishedTalking = true;	// czy Emys przestal gadac ;)
+
+var moveCount = Global.pattern.size(); // ile ruchow jest do wykonania
+
+///////////////////////////////////////////////////
+
+if (not Global.isEmysThere) robot.audio.speech.Say(yourTurn, 0)
+else robot.body.neck.head.Say(yourTurn, 4, 0)|
+sleep(250ms);
 
 loop{
 waituntil(finishedTalking)|
@@ -290,7 +324,7 @@ right = false|
 	// get skeleton positions
 	Rhand = robot.video.kinect.skeletonJointPosition(robot.video.humanDetector.user,11)&	
 	Lhand = robot.video.kinect.skeletonJointPosition(robot.video.humanDetector.user,7)&
-	Head =  robot.video.kinect.skeletonJointPosition(robot.video.humanDetector.user,3)|
+	Head =  robot.video.kinect.skeletonJointPosition(robot.video.humanDetector.user,2)|	// zamiast glowy jest kark
 	
 	// check if hand is above head
 	if ((Head.size==3)&&(Rhand.size==3)&&(Rhand[1]>Head[1])) 
@@ -307,7 +341,7 @@ right = false|
 },
 
 
-at (done){
+at (done){ // wykonano 1 ruch
 moveCount = Global.pattern.size()|
 
 if (left and not right) move = "left"|
@@ -318,8 +352,12 @@ finishedTalking = false|
 Global.counter += 1|
 done = false|
 Global.currentPattern.insertBack(move)|
-move=""|
-robot.audio.speech/*body.neck.head*/.Say(wellDone[random(wellDone.size())], 0/*4, 0*/)|
+move=""|
+
+if (not Global.isEmysThere)
+	robot.audio.speech.Say(wellDone[random(wellDone.size())], 0)
+else
+	robot.body.neck.head.Say(wellDone[random(wellDone.size())], 4, 0)|
 sleep(500ms)|
 
 
@@ -345,20 +383,42 @@ Global.currentPattern.clear();
 //Code executed after leaving the node
 
 //#pop
-}, false, [102.443, 157.814]);
+}, false, [123.846, 134.887]);
 
 //OK state declaration
 var _root_Main_1._nodes_.OK = fsm.State.create_("_root_Main_1._nodes_.OK", _root_Main_1._nodes_.Simon_Says,
 function() {
 //#push 1 "OK"
-/*
-Global.points += 1;
-robot.body.neck.head.Say("Brawo, powt\xc3\xb3rzy\xc5\x82e\xc5\x9b wz\xc3\xb3r dobrze!", 4, 0);
-sleep(500ms);
-robot.body.neck.head.Say("Idziemy dalej!", 4, 0);
-*/
+// SUKCES
 
-robot.audio.speech.Say("Brawo, powt\xc3\xb3rzy\xc5\x82e\xc5\x9b wz\xc3\xb3r dobrze! Idziemy dalej!", 0)|
+// --- ZMIENNE ---
+
+var wellDone = [
+"Brawo,", 
+"\xc5\x9awietnie,", 
+"Super,", 
+"Fantastycznie,"
+];
+
+var goodJob = [
+" dobra robota!", 
+" poprawny wz\xc3\xb3r.", 
+" powt\xc3\xb3rzy\xc5\x82e\xc5\x9b wz\xc3\xb3r dobrze!"
+];
+
+var letsGo = [
+" Czas na kolejny poziom!", 
+" Idziemy dalej!"
+];
+
+//////////////////////////////////////////
+
+// wellDone + goodJob + letsGo
+if (not Global.isEmysThere)
+	robot.audio.speech.Say(wellDone[random(wellDone.size())] + goodJob[random(goodJob.size())] + letsGo[random(letsGo.size())], 0)
+else
+	robot.body.neck.head.Say(wellDone[random(wellDone.size())] + goodJob[random(goodJob.size())] + letsGo[random(letsGo.size())], 4, 0)|
+
 Global.points += 1|
 sleep(500ms)|
 Global.trans = "said";
@@ -377,40 +437,78 @@ Global.trans = "";
 //Code executed after leaving the node
 
 //#pop
-}, false, [24.9572, -6.16467]);
+}, false, [-43.2649, -20.8792]);
 
 //start state declaration
 var _root_Main_1._nodes_.start = fsm.State.create_("_root_Main_1._nodes_.start", _root_Main_1._nodes_.Simon_Says,
 function() {
 //#push 1 "start"
+/////////////////////////////////
+//        SIMON MOWI           //
+/////////////////////////////////
+
+// --- ZMIENNE ---
+
+// przechowuje liczbe zdobytych punktow
 if (!hasSlot("points"))
   var Global.points = 0
 else 
   Global.points = 0;
 
+// przechowuje mozliwe ruchy gracza
 if (!hasSlot("availablePatterns"))
   var Global.availablePatterns = []
 else
   Global.availablePatterns = [];
+	
+Global.availablePatterns += ["right", "left", "both"];
 
+// przechowuje generowany przez gre wzor
 if (!hasSlot("pattern")) 
   var Global.pattern = []
 else 
   Global.pattern = [];
-	
+
+// przechowuje obecnie wykonywany przez gracza zestaw ruchow
 if (!hasSlot("currentPattern")) 
   var Global.currentPattern = []
 else 
   Global.currentPattern = [];
 	
-Global.availablePatterns += ["right", "left", "both"];
+//////////////////////////////////////////////////
 
-robot.audio.speech.Say("Uwaga. Sta\xc5\x84 tak, \xc5\xbcebym Ci\xc4\x99 widzia\xc5\x82", 0);
+// tekst wprowadzajacy gracza
+var intro = [
+"Uwaga. Sta\xc5\x84 tak, \xc5\xbcebym Ci\xc4\x99 widzia\xc5\x82. \xc5\xbceby\xc5\x9bmy mogli razem zagra\xc4\x87!",
+
+"Super! Teraz Ci\xc4\x99 widz\xc4\x99",
+
+"S\xc5\x82uchaj, wyt\xc5\x82umacz\xc4\x99 Ci, o co chodzi.",
+
+"Gdy sko\xc5\x84cz\xc4\x99, podno\xc5\x9b r\xc4\x99ce w g\xc3\xb3r\xc4\x99 w kolejno\xc5\x9bci, jak\xc4\x85 Ci poda\xc5\x82em."
+];
+
+//////////////////////////////////////////////////
+
+if (not Global.isEmysThere) robot.audio.speech.Say(intro[0], 0)
+else robot.body.neck.head.Say(intro[0], 4, 0);
 sleep(1s);
 
-{
+{ // czeka dopoki nie zobaczy gracza
   waituntil(robot.video.humanDetector.visible~1s);
-  robot.audio.speech.Say("Super! Teraz Ci\xc4\x99 widz\xc4\x99.", 0);
+	
+  if (not Global.isEmysThere) robot.audio.speech.Say(intro[1], 0)
+	else robot.body.neck.head.Say(intro[1], 4, 0);
+	sleep(250ms);
+	
+	if (not Global.isEmysThere) robot.audio.speech.Say(intro[2],0)
+	else robot.body.neck.head.Say(intro[2], 4, 0);
+	sleep(250ms);
+	
+	if (not Global.isEmysThere) robot.audio.speech.Say(intro[3],0)
+	else robot.body.neck.head.Say(intro[3], 4, 0);
+	sleep(250ms);
+	
 	Global.trans = "iSee";
 },
 
@@ -429,25 +527,51 @@ Global.trans = "";
 //Code executed after leaving the node
 
 //#pop
-}, false, [-91.024, -104.295]);
+}, false, [-140.518, -165.828]);
 
 //sayPattern state declaration
 var _root_Main_1._nodes_.sayPattern = fsm.State.create_("_root_Main_1._nodes_.sayPattern", _root_Main_1._nodes_.Simon_Says,
 function() {
 //#push 1 "sayPattern"
-robot.audio.speech/*body.neck.head*/.Say("Uwaga, s\xc5\x82uchaj!",0);/* 4, 0);*/
+// PODANIE WZORU DO POWTORZENIA
+
+var heyListen = [
+"Uwaga, s\xc5\x82uchaj!", 
+"S\xc5\x82uchaj uwa\xc5\xbcnie.", 
+"Pos\xc5\x82uchaj.",
+"Uwaga!"
+];
+
+var iSayPatternNow = [
+" Teraz m\xc3\xb3wi\xc4\x99 wz\xc3\xb3r.",
+" Teraz podam wz\xc3\xb3r.",
+" Teraz podam, jakie ruchy masz powt\xc3\xb3rzy\xc4\x87"
+];
+
+//////////////////////////////////////////////
+
+if (not Global.isEmysThere) robot.audio.speech.Say(heyListen[random(heyListen.size())] + iSayPatternNow[random(iSayPatternNow.size())],0)
+else robot.body.neck.head.Say(heyListen[random(heyListen.size())] + iSayPatternNow[random(iSayPatternNow.size())], 4, 0);
 sleep(500ms);
 
-for (var move : Global.pattern) {
+for (var move : Global.pattern) { // wymienia kolejne elementy listy ruchow
 	switch (move) {
-		case "right": robot.audio.speech/*body.neck.head*/.Say("prawa",0);/* 4, 0);*/
-		case "left": robot.audio.speech/*body.neck.head*/.Say("lewa",0);/* 4, 0);*/
-		case "both": robot.audio.speech/*body.neck.head*/.Say("obie",0);/* 4, 0);*/
+		case "right":
+			if (not Global.isEmysThere) robot.audio.speech.Say("Prawa r\xc4\x99ka!", 0)
+			else robot.body.neck.head.Say("Prawa r\xc4\x99ka!", 4, 0);
+			
+		case "left": 
+			if (not Global.isEmysThere) robot.audio.speech.Say("Lewa r\xc4\x99ka!", 0)
+			else robot.body.neck.head.Say("Lewa r\xc4\x99ka!", 4, 0);
+		
+		case "both": 
+			if (not Global.isEmysThere) robot.audio.speech.Say("Obie r\xc4\x99ce!", 0)
+			else robot.body.neck.head.Say("Obie r\xc4\x99ce!", 4, 0);
 	};
 }|
 
 Global.trans="said"|
-sleep(500ms);
+sleep(200ms);
 //#pop
 }
 , false
@@ -463,12 +587,14 @@ Global.trans = "";
 //Code executed after leaving the node
 
 //#pop
-}, false, [182.491, 76.9011]);
+}, false, [100.892, 1.99065]);
 
 //checkIfDoneWell state declaration
 var _root_Main_1._nodes_.checkIfDoneWell = fsm.State.create_("_root_Main_1._nodes_.checkIfDoneWell", _root_Main_1._nodes_.Simon_Says,
 function() {
 //#push 1 "checkIfDoneWell"
+// WERYFIKACJA POPRAWNOSCI RUCHOW GRACZA
+
 if (Global.currentPattern == Global.pattern) Global.trans = "patternGood"
 else Global.trans = "patternBad";
 //#pop
@@ -492,7 +618,11 @@ Global.trans = "";
 var _root_Main_1._nodes_.addToPattern = fsm.State.create_("_root_Main_1._nodes_.addToPattern", _root_Main_1._nodes_.Simon_Says,
 function() {
 //#push 1 "addToPattern"
-Global.pattern.insertBack(Global.availablePatterns[random(Global.availablePatterns.size())]);
+// DODAWANIE NASTEPNEGO ELEMENTU DO LISTY RUCHOW
+
+echo("Adding");
+Global.pattern.insertBack(Global.availablePatterns[random(Global.availablePatterns.size())]);
+echo("Added");
 //#pop
 }
 , false
@@ -508,28 +638,68 @@ Global.trans = "";
 //Code executed after leaving the node
 
 //#pop
-}, false, [85.8031, -102.091]);
+}, false, [144.661, -142.222]);
 
 //notOK state declaration
 var _root_Main_1._nodes_.notOK = fsm.State.create_("_root_Main_1._nodes_.notOK", _root_Main_1._nodes_.Simon_Says,
 function() {
 //#push 1 "notOK"
-/*
-robot.body.neck.head.Say("Ojej, pomyli\xc5\x82e\xc5\x9b si\xc4\x99!", 4, 0);
-sleep(500ms);
-robot.body.neck.head.Say("Ilo" + Global.points + " punkt\xc3\xb3w!", 4, 0);
-*/
-robot.audio.speech.Say("Ojej, pomy\xc5\x82ka! Zdobyte punkty: " + Global.points, 0)|sleep(500ms);
+// PORAZKA
 
-var ret = robot.competency.cAskYesNo("Gramy dalej?");
+// --- ZMIENNE ---
+
+var thatsAPity = [
+"Szkoda.", 
+"Dobrze, mam nadziej\xc4\x99, \xc5\xbce wkr\xc3\xb3tce zmienisz zdanie!", 
+"W porz\xc4\x85dku. Do zobaczenia nast\xc4\x99pnym razem!", 
+"Ech, dobrze.",
+"No dobra.",
+"Okej."
+];
+
+var ohNo = [
+"Ojej, pomy\xc5\x82ka!", 
+"Pomyli\xc5\x82e\xc5\x9b si\xc4\x99!", 
+"Och! Z\xc5\x82y wz\xc3\xb3r!", 
+"Ojoj. Koniec gry...",
+"Ojej, nie uda\xc5\x82o Ci si\xc4\x99 powt\xc3\xb3rzy\xc4\x87 dobrze wzoru!"
+];
+
+var again = [
+"Gramy dalej?",
+"Gramy jeszcze raz?",
+"Mo\xc5\xbce zagramy jeszcze raz?",
+"Co powiesz na jeszcze jedn\xc4\x85 gr\xc4\x99?"
+];
+
+/////////////////////////////////////
+
+if (not Global.isEmysThere)
+	robot.audio.speech.Say(ohNo[random(ohNo.size())] + " Zdobyte punkty: " + Global.points, 0)
+else
+	robot.body.neck.head.Say(ohNo[random(ohNo.size())] + " Zdobyte punkty: " + Global.points, 4, 0)|
+sleep(500ms);
+
+
+var ret = robot.competency.cAskYesNo(again[random(again.size())]);
+
+// koniec gry
 if(ret=="NO" || ret=="TIMEOUT"){
+	
 	robot.audio.speech.rate=-3;
-	robot.body.neck.head.ExpSad(10,1)|
-	robot.body.neck.head.Say("Szkoda.", 4, 0);
+	if (Global.isEmysThere) robot.body.neck.head.ExpSad(10,1)|
+	
+	if (not Global.isEmysThere)
+		robot.audio.speech.Say(thatsAPity[random(thatsAPity.size())], 0)
+	else
+		robot.body.neck.head.Say(thatsAPity[random(thatsAPity.size())], 4, 0);
+		
 	robot.audio.speech.rate=0;
 	Global.trans="Simon_end";
 };
-if(ret=="YES")Global.trans="Simon_begin";
+
+// uruchamia gre raz jeszcze
+if(ret=="YES") Global.trans="Simon_begin";
 
 //#pop
 }
@@ -546,7 +716,7 @@ Global.trans = "";
 //Code executed after leaving the node
 
 //#pop
-}, false, [-168.479, 48.3381]);
+}, false, [-228.675, 8.93265]);
 
 //Introduce state declaration
 var _root_Main_1._nodes_.Introduce = fsm.State.create_("_root_Main_1._nodes_.Introduce", _root_Main_1._nodes_.Unnamed,
@@ -631,7 +801,7 @@ Global.trans="";
 var _root_Main_1._nodes_.Story_Teller = fsm.State.create_("_root_Main_1._nodes_.Story_Teller", _root_Main_1._nodes_.Unnamed,
 function() {
 //#push 1 "Story_Teller"
-var storyNr = random(3);
+var storyNr = random(4);
 //var story = "We Wroc\xc5\x82awiu blablabla";
 //var question = "Jakie miasto by\xc5\x82o wymienione?";
 //var answer = "Wroc\xc5\x82aw";//"Wroc\xc5\x82aw";
@@ -641,23 +811,26 @@ storyNr++;
 
 if (ret=="CORRECT"+storyNr)
 {
-  robot.body.neck.head.Say("Zgadza si\xc4\x99!", 4, 0);
+  robot.audio.speech.Say("Zgadza si\xc4\x99!", 0);
+	//robot.body.neck.head.Say("Zgadza si\xc4\x99!", 4, 0);
 	Global.trans = "done";
 }
 else if (ret=="TIMEOUT")
 {	
-	robot.body.neck.head.Say("Koniec czasu!", 4, 0);
+	robot.audio.speech.Say("Koniec czasu!", 0);
+	//robot.body.neck.head.Say("Koniec czasu!", 4, 0);
 	Global.trans = "done";
 }
 else // TIMEOUT
 {	
-  robot.body.neck.head.Say("To nie to!", 4, 0);
+  robot.audio.speech.Say("To nie to!", 0);
+	//robot.body.neck.head.Say("To nie to!", 4, 0);
 	Global.trans = "done";
 };
 //#pop
 }
 , false
-, 44
+, 28
 , function() {
 //#push 1 "Story_Teller.enter"
 //Code executed before entering the node
@@ -676,30 +849,30 @@ Global.trans = "";
 /***************************
  * Transitions declaration *
  ***************************/
-fsm.Transition.create_(_root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.checkIfDoneWell, _root_Main_1._nodes_.notOK, "Global.trans == \"patternBad\"", "_root_Main_1._nodes_.Transition_13");
-fsm.Transition.create_(_root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.letsMove, _root_Main_1._nodes_.checkIfDoneWell, "Global.trans == \"done\"", "_root_Main_1._nodes_.Transition_11");
+fsm.Transition.create_(_root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.addToPattern, _root_Main_1._nodes_.sayPattern, "done?", "_root_Main_1._nodes_.Transition_9");
+fsm.Transition.create_(_root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.start, _root_Main_1._nodes_.addToPattern, "Global.trans == \"iSee\"", "_root_Main_1._nodes_.Transition_8");
 fsm.Transition.create_(_root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.checkIfDoneWell, _root_Main_1._nodes_.OK, "Global.trans == \"patternGood\"", "_root_Main_1._nodes_.Transition_12");
 fsm.Transition.create_(_root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.OK, _root_Main_1._nodes_.addToPattern, "Global.trans == \"said\"", "_root_Main_1._nodes_.Transition_14");
-fsm.Transition.create_(_root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.addToPattern, _root_Main_1._nodes_.sayPattern, "done?", "_root_Main_1._nodes_.Transition_9");
+fsm.Transition.create_(_root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.letsMove, _root_Main_1._nodes_.checkIfDoneWell, "Global.trans == \"done\"", "_root_Main_1._nodes_.Transition_11");
 fsm.Transition.create_(_root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.sayPattern, _root_Main_1._nodes_.letsMove, "Global.trans == \"said\"", "_root_Main_1._nodes_.Transition_10");
-fsm.Transition.create_(_root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.start, _root_Main_1._nodes_.addToPattern, "Global.trans == \"iSee\"", "_root_Main_1._nodes_.Transition_8");
+fsm.Transition.create_(_root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.checkIfDoneWell, _root_Main_1._nodes_.notOK, "Global.trans == \"patternBad\"", "_root_Main_1._nodes_.Transition_13");
 fsm.Transition.create_(_root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.notOK, _root_Main_1._nodes_.start, "Global.trans==\"Simon_begin\"", "_root_Main_1._nodes_.Transition_17");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Game, _root_Main_1._nodes_.SomethingElse, "done?", "_root_Main_1._nodes_.Transition_20");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Game, _root_Main_1._nodes_.Story_Teller, "Global.trans == \"storyteller\"", "_root_Main_1._nodes_.Transition_23");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Story_Teller, _root_Main_1._nodes_.Game, "Global.trans == \"done\"", "_root_Main_1._nodes_.Transition_25");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.SomethingElse, "Global.trans==\"Simon_end\"", "_root_Main_1._nodes_.Transition_16");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Game, _root_Main_1._nodes_.Simon_Says, "Global.trans==\"simon\"", "_root_Main_1._nodes_.Transition_22");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Game, "Global.trans==\"game\"", "_root_Main_1._nodes_.Transition_15");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Introduce, "Global.trans==\"introduce\"", "_root_Main_1._nodes_.Transition_18");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Time, "Global.trans == \"saytime\"", "_root_Main_1._nodes_.Transition_6");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.SomethingElse, _root_Main_1._nodes_.Called, "Global.trans==\"found\"", "_root_Main_1._nodes_.Transition_24");
+fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Compliment, "Global.trans == \"compliment\"", "_root_Main_1._nodes_.Transition_5");
 fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Waiting, _root_Main_1._nodes_.Called, "Global.trans == \"found\"", "_root_Main_1._nodes_.Transition_2");
 fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Compliment, _root_Main_1._nodes_.Waiting, "done?", "_root_Main_1._nodes_.Transition_3");
 fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Waiting, "Global.trans == \"back\"", "_root_Main_1._nodes_.Transition_4");
-fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Compliment, "Global.trans == \"compliment\"", "_root_Main_1._nodes_.Transition_5");
 fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Time, _root_Main_1._nodes_.Waiting, "done?", "_root_Main_1._nodes_.Transition_7");
-fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Game, "Global.trans==\"game\"", "_root_Main_1._nodes_.Transition_15");
-fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Simon_Says, _root_Main_1._nodes_.SomethingElse, "Global.trans==\"Simon_end\"", "_root_Main_1._nodes_.Transition_16");
-fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Introduce, "Global.trans==\"introduce\"", "_root_Main_1._nodes_.Transition_18");
 fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Introduce, _root_Main_1._nodes_.Waiting, "done?", "_root_Main_1._nodes_.Transition_19");
-fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Called, _root_Main_1._nodes_.Time, "Global.trans == \"saytime\"", "_root_Main_1._nodes_.Transition_6");
-fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Game, _root_Main_1._nodes_.SomethingElse, "done?", "_root_Main_1._nodes_.Transition_20");
 fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.SomethingElse, _root_Main_1._nodes_.Waiting, "Global.trans==\"back\"", "_root_Main_1._nodes_.Transition_21");
-fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Game, _root_Main_1._nodes_.Simon_Says, "Global.trans==\"simon\"", "_root_Main_1._nodes_.Transition_22");
-fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.SomethingElse, _root_Main_1._nodes_.Called, "Global.trans==\"found\"", "_root_Main_1._nodes_.Transition_24");
-fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Game, _root_Main_1._nodes_.Story_Teller, "Global.trans == \"storyteller\"", "_root_Main_1._nodes_.Transition_23");
-fsm.Transition.create_(_root_Main_1._nodes_.Unnamed, _root_Main_1._nodes_.Story_Teller, _root_Main_1._nodes_.Game, "Global.trans == \"done\"", "_root_Main_1._nodes_.Transition_25");
 fsm.Transition.create_(_root_Main_1, _root_Main_1._nodes_.START, _root_Main_1._nodes_.Unnamed, "done?", "_root_Main_1._nodes_.Transition");
 
 
