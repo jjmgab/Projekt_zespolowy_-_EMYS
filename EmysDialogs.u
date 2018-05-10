@@ -196,7 +196,13 @@ do(Global) {
 
   
   function d_AskWhatKindOfGame()
-  {
+  {
+    var whatAreWePlaying = [
+    "W co pogramy?",
+    "W jak\xc4\x85 gr\xc4\x99 chcia\xc5\x82by\xc5\x9b zagra\xc4\x87?",
+    "W jak\xc4\x85 gr\xc4\x99 zagramy?"
+    ];
+  
     robot.audio.recognition.pause = true;
     robot.audio.recognition.resultTag="";
     robot.audio.recognition.result="";
@@ -206,7 +212,7 @@ do(Global) {
     if (robot.dialogue.language==2) robot.audio.recognition.LoadGrammar(_uFilesDir+"grammars/WhatGamePT.grxml");  
     // 
     //robot.dialogue.Say(robot.dialogue.speech_sequences[500+4.random][robot.dialogue.language],false);
-    robot.body.neck.head.Say("W co pogramy?", 4, 0);
+    robot.body.neck.head.Say(whatAreWePlaying[random(whatAreWePlaying.size())], 4, 0);
     robot.dialogue.ResetTimeout(-1);
     robot.audio.recognition.pause = false;
 
@@ -225,7 +231,7 @@ do(Global) {
       robot.dialogue.ResetTimeout(-1);
       robot.audio.recognition.pause = true;
       robot.dialogue.BeepSound();
-      robot.body.neck.head.Say("W co pogramy?", 4, 0);
+      robot.body.neck.head.Say(whatAreWePlaying[random(whatAreWePlaying.size())], 4, 0);
       robot.audio.recognition.resultTag = "";
       robot.audio.recognition.result="";
       robot.audio.recognition.pause = false;

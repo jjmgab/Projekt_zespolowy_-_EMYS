@@ -4,6 +4,8 @@
 		<one-of>
 			<item><ruleref uri="#Check"/></item>
 			<item><ruleref uri="#Learn"/></item>
+			<item><ruleref uri="#Simon"/></item>
+			<item><ruleref uri="#Story"/></item>
 			<item><ruleref uri="#Back"/></item>
 			<item><ruleref uri="#Repeat"/></item>
 		</one-of>
@@ -63,6 +65,18 @@
           <item>sajmona</item>
           <item>zapamiętywanie</item>
 		  <item>sajmon mówi</item>
+        </one-of>
+    </rule>
+	<rule id="Story" scope="private">
+        <tag>STORY</tag>
+        <one-of>
+          <item>w</item>
+          <item></item>
+        </one-of>
+        <one-of>
+          <item>historie</item>
+          <item>historyjki</item>
+		  <item>opowiadania</item>
         </one-of>
     </rule>
     <rule id="Back" scope="private">
