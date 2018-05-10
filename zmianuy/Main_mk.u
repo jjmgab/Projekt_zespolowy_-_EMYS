@@ -3,7 +3,7 @@
  *
  * Load this file in your server to run the graph.
  *
- * Created: Cz 10. maj 08:30:26 2018
+ * Created: Cz 10. maj 08:52:17 2018
  *      by: Gostai Studio 2.7
  *
  * WARNING! All changes made in this file will be lost!
@@ -60,15 +60,7 @@ function() {
 if (!hasSlot("trans")) var Global.trans = "";
 
 if (!hasSlot("counter")) var Global.counter = 0;
-
-
-if (!hasSlot("stories")) var Global.stories = ["We Wroc\xc5\x82awiu mie\xc5\x9bci si\xc4\x99 najlepsza Politechnika w kraju.","W Krakowie znajduje si\xc4\x99 pi\xc4\x99kny zamek kr\xc3\xb3lewski, Wawel.", "Uzbiera\xc5\x82y si\xc4\x99 dwa worki \xc5\x9bmieci, Marek mia\xc5\x82 je ju\xc5\xbc dawno wynie\xc5\x9b\xc4\x87", "Wczoraj w sklepie widzia\xc5\x82em Ani\xc4\x99, star\xc4\x85 kole\xc5\xbcank\xc4\x99 z liceum"];
 
-if (!hasSlot("questions")) var Global.questions = ["Jakie miasto by\xc5\x82o wymienione?", "Jakie miasto by\xc5\x82o wymienione?", "Jak mia\xc5\x82 na imi\xc4\x99 ch\xc5\x82opak?", "Jak mia\xc5\x82a na imi\xc4\x99 dziewczyna?"];
-
-if (!hasSlot("answers")) var Global.answers = ["Wroc\xc5\x82aw", "Krak\xc3\xb3w", "Marek", "Ania"];
-
-if (!hasSlot("checkStory")) var Global.checkStory = [false, false, false, false];
 //#pop
 }
 , true
@@ -84,7 +76,7 @@ if (!hasSlot("checkStory")) var Global.checkStory = [false, false, false, false]
 //Code executed after leaving the node
 
 //#pop
-}, false, [-620.388, 426.766]);
+}, false, [-787.728, 332.927]);
 
 //Unnamed state declaration
 var _root_Main_mk_1._nodes_.Unnamed = fsm.State.create_("_root_Main_mk_1._nodes_.Unnamed", _root_Main_mk_1,
@@ -113,7 +105,7 @@ g:robot.competency.ActAlive(true),
 //Code executed after leaving the node
 
 //#pop
-}, false, [-29.0556, -825.059]);
+}, false, [-438.892, -1242.96]);
 
 //Waiting state declaration
 var _root_Main_mk_1._nodes_.Waiting = fsm.State.create_("_root_Main_mk_1._nodes_.Waiting", _root_Main_mk_1._nodes_.Unnamed,
@@ -136,7 +128,7 @@ while(true) {
 },
 //#pop
 }
-, false
+, true
 , 5
 , function() {
 //#push 1 "Waiting.enter"
@@ -150,7 +142,7 @@ Global.trans = "";
 //Code executed after leaving the node
 
 //#pop
-}, false, [-826.43, 447.581]);
+}, false, [-715.912, 820.581]);
 
 //Compliment state declaration
 var _root_Main_mk_1._nodes_.Compliment = fsm.State.create_("_root_Main_mk_1._nodes_.Compliment", _root_Main_mk_1._nodes_.Unnamed,
@@ -179,7 +171,7 @@ robot.body.neck.head.Say(compliment[random(compliment.size())], 4, 0);
 //Code executed after leaving the node
 
 //#pop
-}, false, [-181.308, 302.017]);
+}, false, [-91.5116, 419.443]);
 
 //Called state declaration
 var _root_Main_mk_1._nodes_.Called = fsm.State.create_("_root_Main_mk_1._nodes_.Called", _root_Main_mk_1._nodes_.Unnamed,
@@ -218,7 +210,7 @@ Global.trans=robot.competency.WhatShouldRobotDo(ret);
 //Code executed after leaving the node
 
 //#pop
-}, false, [128.389, 39.5221]);
+}, false, [178.246, 339.545]);
 
 //Time state declaration
 var _root_Main_mk_1._nodes_.Time = fsm.State.create_("_root_Main_mk_1._nodes_.Time", _root_Main_mk_1._nodes_.Unnamed,
@@ -241,7 +233,7 @@ robot.dialogue.SayTime();
 //Code executed after leaving the node
 
 //#pop
-}, false, [-102.632, 580.826]);
+}, false, [146.035, 684.437]);
 
 //Introduce state declaration
 var _root_Main_mk_1._nodes_.Introduce = fsm.State.create_("_root_Main_mk_1._nodes_.Introduce", _root_Main_mk_1._nodes_.Unnamed,
@@ -263,7 +255,7 @@ robot.competency.Introduce();
 //Code executed after leaving the node
 
 //#pop
-}, false, [-129.396, 446.315]);
+}, false, [50.1968, 570.648]);
 
 //Game state declaration
 var _root_Main_mk_1._nodes_.Game = fsm.State.create_("_root_Main_mk_1._nodes_.Game", _root_Main_mk_1._nodes_.Unnamed,
@@ -292,7 +284,7 @@ Global.trans="";
 //Code executed after leaving the node
 
 //#pop
-}, false, [-251.219, -144.056]);
+}, false, [-30.1821, 49.3511]);
 
 //SomethingElse state declaration
 var _root_Main_mk_1._nodes_.SomethingElse = fsm.State.create_("_root_Main_mk_1._nodes_.SomethingElse", _root_Main_mk_1._nodes_.Unnamed,
@@ -335,7 +327,7 @@ Global.trans="";
 //Code executed after leaving the node
 
 //#pop
-}, false, [-580.412, -71.3605]);
+}, false, [-352.467, 184.214]);
 
 //News state declaration
 var _root_Main_mk_1._nodes_.News = fsm.State.create_("_root_Main_mk_1._nodes_.News", _root_Main_mk_1._nodes_.Unnamed,
@@ -360,7 +352,7 @@ if(ret != "TIMEOUT")
 //Code executed after leaving the node
 
 //#pop
-}, false, [-37.9717, 679.883]);
+}, false, [272.862, 811.123]);
 
 //Simon_Says_2 state declaration
 var _root_Main_mk_1._nodes_.Simon_Says_2 = fsm.State.create_("_root_Main_mk_1._nodes_.Simon_Says_2", _root_Main_mk_1._nodes_.Unnamed,
@@ -391,7 +383,7 @@ else Global.counter = 0;
   // z.	\xc5\xbc	Z. \xc5\xbb
 //#pop
 }
-, true
+, false
 , 31
 , function() {
 //#push 1 "Simon_Says_2.enter"
@@ -404,7 +396,7 @@ else Global.counter = 0;
 //Code executed after leaving the node
 
 //#pop
-}, false, [-509.114, -537.689]);
+}, false, [-388.096, -493.257]);
 
 //letsMove_2 state declaration
 var _root_Main_mk_1._nodes_.letsMove_2 = fsm.State.create_("_root_Main_mk_1._nodes_.letsMove_2", _root_Main_mk_1._nodes_.Simon_Says_2,
@@ -889,7 +881,7 @@ sleep(250ms);
 , function() {
 //#push 1 "cantSee.enter"
 //Code executed before entering the node
-
+Global.trans = "";
 //#pop
 }
 , function() {
@@ -919,13 +911,13 @@ function() {
 //Code executed after leaving the node
 
 //#pop
-}, false, [140.796, -384.595]);
+}, false, [574.757, -202.472]);
 
 //StartGame state declaration
 var _root_Main_mk_1._nodes_.StartGame = fsm.State.create_("_root_Main_mk_1._nodes_.StartGame", _root_Main_mk_1._nodes_.Story_Teller_2,
 function() {
 //#push 1 "StartGame"
-var ret = robot.competency.cAskYesNo("Zaczynamy?");
+var ret = robot.competency.cAskYesNo("Gotowy?");
 if(ret=="NO" || ret=="TIMEOUT"){
 	robot.audio.speech.rate=-3;
 	robot.body.neck.head.ExpSad(10,1)|
@@ -949,23 +941,27 @@ Global.trans = "";
 //Code executed after leaving the node
 
 //#pop
-}, false, [-142.728, -17.8215]);
+}, false, [-195.401, -11.9689]);
 
 //Story_Teller_Task state declaration
 var _root_Main_mk_1._nodes_.Story_Teller_Task = fsm.State.create_("_root_Main_mk_1._nodes_.Story_Teller_Task", _root_Main_mk_1._nodes_.Story_Teller_2,
 function() {
 //#push 1 "Story_Teller_Task"
-var storyNr = random(5);
-//var story = "We Wroc\xc5\x82awiu blablabla";
-//var question = "Jakie miasto by\xc5\x82o wymienione?";
-//var answer = "Wroc\xc5\x82aw";//"Wroc\xc5\x82aw";
+var wellDone = [
+"Super!",
+"Fantastycznie!", 
+"Brawo!", 
+"Zgadza si\xc4\x99!"
+];
+
+var storyNr = random(Global.stories.size());
 
 var ret = robot.competency.cTellStory(Global.stories[storyNr], Global.questions[storyNr], Global.answers[storyNr]);
 storyNr++;
 
 if (ret=="CORRECT"+storyNr)
 {
-  robot.body.neck.head.Say("Zgadza si\xc4\x99!", 4, 0);
+  robot.body.neck.head.Say(wellDone[random(wellDone.size())], 4, 0);
 	Global.trans = "storyteller_taskdone";
 }
 else if (ret=="TIMEOUT")
@@ -993,18 +989,34 @@ Global.trans = "";
 //Code executed after leaving the node
 
 //#pop
-}, false, [93.4848, -82.1974]);
+}, false, [91.2158, -82.1974]);
 
 //Story_Teller_Done state declaration
 var _root_Main_mk_1._nodes_.Story_Teller_Done = fsm.State.create_("_root_Main_mk_1._nodes_.Story_Teller_Done", _root_Main_mk_1._nodes_.Story_Teller_2,
 function() {
 //#push 1 "Story_Teller_Done"
+var thatsAPity = [
+"Szkoda.", 
+"Dobrze, mam nadziej\xc4\x99, \xc5\xbce wkr\xc3\xb3tce zmienisz zdanie!", 
+"W porz\xc4\x85dku. Do zobaczenia nast\xc4\x99pnym razem!", 
+"Ech, dobrze.",
+"No dobra.",
+"Okej."
+];
 
-var ret = robot.competency.cAskYesNo("Gramy dalej?");
+var again = [
+"Gramy dalej?",
+"Gramy jeszcze raz?",
+"Mo\xc5\xbce zagramy jeszcze raz?",
+"Co powiesz na jeszcze jedn\xc4\x85 gr\xc4\x99?"
+];
+
+
+var ret = robot.competency.cAskYesNo(again[random(again.size())]);
 if(ret=="NO" || ret=="TIMEOUT"){
 	robot.audio.speech.rate=-3;
 	robot.body.neck.head.ExpSad(10,1)|
-	robot.body.neck.head.Say("W porz\xc4\x85dku.", 4, 0);
+	robot.body.neck.head.Say(thatsAPity[random(thatsAPity.size())], 4, 0);
 	robot.audio.speech.rate=0;
 	Global.trans="storyteller_end";
 };
@@ -1025,7 +1037,7 @@ Global.trans = "";
 //Code executed after leaving the node
 
 //#pop
-}, false, [27.4388, 100.768]);
+}, false, [-39.0171, 173.626]);
 
 //Hej state declaration
 var _root_Main_mk_1._nodes_.Hej = fsm.State.create_("_root_Main_mk_1._nodes_.Hej", _root_Main_mk_1._nodes_.Unnamed,
@@ -1058,7 +1070,7 @@ robot.body.neck.head.Say(greeting[random(greeting.size())], 4, 0);
 //Code executed after leaving the node
 
 //#pop
-}, false, [-310.401, 98.0215]);
+}, false, [-192.975, 339.781]);
 
 /***************************
  * Transitions declaration *
@@ -1075,7 +1087,7 @@ fsm.Transition.create_(_root_Main_mk_1._nodes_.Simon_Says_2, _root_Main_mk_1._no
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Simon_Says_2, _root_Main_mk_1._nodes_.cantSee, _root_Main_mk_1._nodes_.checkIfDoneWell_2, "done?", "_root_Main_mk_1._nodes_.Transition_10");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Story_Teller_2, _root_Main_mk_1._nodes_.StartGame, _root_Main_mk_1._nodes_.Story_Teller_Task, "Global.trans == \"storyteller_taskbegin\"", "_root_Main_mk_1._nodes_.Transition_23_2");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Story_Teller_2, _root_Main_mk_1._nodes_.Story_Teller_Task, _root_Main_mk_1._nodes_.Story_Teller_Done, "Global.trans == \"storyteller_taskdone\"", "_root_Main_mk_1._nodes_.Transition_25_2");
-fsm.Transition.create_(_root_Main_mk_1._nodes_.Story_Teller_2, _root_Main_mk_1._nodes_.Story_Teller_Done, _root_Main_mk_1._nodes_.StartGame, "Global.trans == \"storyteller_begin\"", "_root_Main_mk_1._nodes_.Transition_28");
+fsm.Transition.create_(_root_Main_mk_1._nodes_.Story_Teller_2, _root_Main_mk_1._nodes_.Story_Teller_Done, _root_Main_mk_1._nodes_.Story_Teller_Task, "Global.trans == \"storyteller_begin\"", "_root_Main_mk_1._nodes_.Transition_28");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Unnamed, _root_Main_mk_1._nodes_.Waiting, _root_Main_mk_1._nodes_.Hej, "Global.trans == \"found\"", "_root_Main_mk_1._nodes_.Transition_2");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Unnamed, _root_Main_mk_1._nodes_.Compliment, _root_Main_mk_1._nodes_.Waiting, "done?", "_root_Main_mk_1._nodes_.Transition_3");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Unnamed, _root_Main_mk_1._nodes_.Called, _root_Main_mk_1._nodes_.Waiting, "Global.trans == \"back\"", "_root_Main_mk_1._nodes_.Transition_4");

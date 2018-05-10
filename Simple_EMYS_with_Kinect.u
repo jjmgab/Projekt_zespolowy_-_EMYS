@@ -34,8 +34,8 @@ do(Global) {
     function cWaitForCall()			{call.d_WaitForCall();};
     function WhatShouldRobotDo(work)		{call.c_WhatShouldRobotDo(work);};
     function cTellStory(story, question, answer){call.d_TellStory(story, question, answer);};
-    function cAskWhatKindOfNews() 		{call.d_AskWhatKindOfNews();};
-  
+    function cAskWhatKindOfNews() 		{call.d_AskWhatKindOfNews();};
+  
   };
     
 
@@ -122,7 +122,7 @@ do(Global) {
     //
     robot.audio.recognition.LoadGrammar(_uFilesDir+"grammars/AnswersPL.grxml"); 
     // 
-    robot.body.neck.head.Say("Zaczynajmy...", 4, 0);
+    //robot.body.neck.head.Say("Zaczynajmy...", 4, 0);
     sleep(200ms);//
     robot.body.neck.head.Say(story, 4, 0);//opowiadanie historii
     sleep(500ms);//konieczna przerwa na przetworzenie informacji
@@ -193,9 +193,9 @@ do(Global) {
     robot.audio.recognition.pause = true|
     robot.audio.player.Play(_uFilesDir+"sounds/samples/down_double_beep.mp3");
     return "TIMEOUT";
-  };
-  
-  function d_AskWhatKindOfNews(){
+  };
+  
+  function d_AskWhatKindOfNews(){
     robot.audio.recognition.pause = true;
     robot.audio.recognition.resultTag="";
     robot.audio.recognition.result="";
@@ -218,9 +218,9 @@ do(Global) {
     every(1s) rec_timeout++,
     waituntil (rec_timeout > 10)|
     robot.audio.recognition.pause = true|
-    return "NOTHING";
-  };
-  
+    return "NOTHING";
+  };
+  
   
   echo("OK: EMYS -- PROJEKT ZESPOLOWY -- behaviours added.");
 
