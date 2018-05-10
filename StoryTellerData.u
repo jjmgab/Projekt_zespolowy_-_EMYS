@@ -1,0 +1,10 @@
+{
+
+  var Global.stories = ["We Wroc\xc5\x82awiu mie\xc5\x9bci si\xc4\x99 najlepsza Politechnika w kraju.","W Krakowie znajduje si\xc4\x99 pi\xc4\x99kny zamek 	kr\xc3\xb3lewski, Wawel.", "Uzbiera\xc5\x82y si\xc4\x99 dwa worki \xc5\x9bmieci, Marek mia\xc5\x82 je ju\xc5\xbc dawno wynie\xc5\x9b\xc4\x87", "Wczoraj w sklepie widzia\xc5\x82em 	Ani\xc4\x99, star\xc4\x85 kole\xc5\xbcank\xc4\x99 z liceum"];
+
+  var Global.questions = ["Jakie miasto by\xc5\x82o wymienione?", "Jakie miasto by\xc5\x82o wymienione?", "Jak mia\xc5\x82 na imi\xc4\x99 ch\xc5\x82opak?", "Jak mia\xc5\x82a na imi\xc4\x99 dziewczyna?"];
+
+  var Global.answers = ["Wroc\xc5\x82aw", "Krak\xc3\xb3w", "Marek", "Ania"];
+
+  var Global.checkStory = [false, false, false, false];
+};
