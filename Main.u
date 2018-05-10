@@ -3,7 +3,7 @@
  *
  * Load this file in your server to run the graph.
  *
- * Created: Œr 9. maj 22:24:01 2018
+ * Created: Cz 10. maj 06:37:10 2018
  *      by: Gostai Studio 2.7
  *
  * WARNING! All changes made in this file will be lost!
@@ -96,7 +96,7 @@ t:{
 },
 
 
-//g:robot.competency.ActAlive(true),
+g:robot.competency.ActAlive(true),
 
 //#pop
 }
@@ -166,8 +166,8 @@ Global.trans = "";
 var _root_Main_1._nodes_.Compliment = fsm.State.create_("_root_Main_1._nodes_.Compliment", _root_Main_1._nodes_.Unnamed,
 function() {
 //#push 1 "Compliment"
-//robot.audio.speech/*body.neck.head*/.Say("Wi\xc4\x99c cho\xc5\xba na piwo", 4, 0);
-robot.audio.speech/*body.neck.head*/.Say("Wi\xc4\x99c cho\xc5\xba na piwo", 0);
+robot.audio.speech/*body.neck.head*/.Say("Wi\xc4\x99c cho\xc5\xba na piwo", 4, 0);
+//robot.audio.speech/*body.neck.head*/.Say("Wi\xc4\x99c cho\xc5\xba na piwo", 0);
 
 
 //#pop
@@ -191,7 +191,7 @@ robot.audio.speech/*body.neck.head*/.Say("Wi\xc4\x99c cho\xc5\xba na piwo", 0);
 var _root_Main_1._nodes_.Called = fsm.State.create_("_root_Main_1._nodes_.Called", _root_Main_1._nodes_.Unnamed,
 function() {
 //#push 1 "Called"
-//robot.body.neck.head.ExpSmile(10,1)|
+robot.body.neck.head.ExpSmile(10,1)|
 var ret = robot.competency.cAskForBasic("Co tam?");
 
 echo(ret);
@@ -241,7 +241,9 @@ var _root_Main_1._nodes_.Simon_Says = fsm.State.create_("_root_Main_1._nodes_.Si
 function() {
 //#push 1 "Simon_Says"
 if (!hasSlot("isEmysThere")) var Global.isEmysThere = false
-else Global.isEmysThere = true;
+else Global.isEmysThere = false;
+
+Global.isEmysThere = true;
 
 robot.video.humanDetector.enable=true;
 
