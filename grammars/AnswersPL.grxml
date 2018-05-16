@@ -22,6 +22,15 @@
       <item>
         Marek<tag>CORRECT3</tag>
       </item>
+      <item>
+        Ania<tag>CORRECT4</tag>
+      </item>
+      <item>
+        Książka<tag>CORRECT5</tag>
+      </item>
+      <item>
+        Dwa<tag>CORRECT5</tag>
+      </item>
     </one-of>
   </rule>
 
