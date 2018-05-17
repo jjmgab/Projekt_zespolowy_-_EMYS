@@ -7,7 +7,7 @@
 //sekcja StoryTeller
 /////////////////////////////////////////////////
 
-  var Global.stories = ["We Wroc\xc5\x82awiu mie\xc5\x9bci si\xc4\x99 najlepsza Politechnika w kraju.","W Krakowie znajduje si\xc4\x99 pi\xc4\x99kny zamek kr\xc3\xb3lewski, Wawel.", "Uzbiera\xc5\x82y si\xc4\x99 dwa worki \xc5\x9bmieci, Marek mia\xc5\x82 je ju\xc5\xbc dawno wynie\xc5\x9b\xc4\x87", "Wczoraj w sklepie widzia\xc5\x82em Ani\xc4\x99, star\xc4\x85 kole\xc5\xbcank\xc4\x99 z liceum.", "Jaki\xc5\x9b tydzie\xc5\x84 temu kupi\xc5\x82em sobie ksi\xc4\x85\xc5\xbc\xc4\x99, jest \xc5\x9bwietna, opowiada o historii pewnego czarodzieja.", "Chcieli\xc5\x9bmy i\xc5\x9b\xc4\x87 wczoraj do kina ale by\xc5\x82y tylko dwa wolne miejsca, a nas by\xc5\x82o a\xc5\xbc pi\xc4\x99ciu, wi\xc4\x99c sko\xc5\x84czylo si\xc4\x99 na wsp\xc3\xb3\xc5\x82nym graniu"];
+  var Global.stories = ["We Wroc\xc5\x82awiu mie\xc5\x9bci si\xc4\x99 najlepsza Politechnika w kraju.","W Krakowie znajduje si\xc4\x99 pi\xc4\x99kny zamek kr\xc3\xb3lewski, Wawel.", "Uzbiera\xc5\x82y si\xc4\x99 dwa worki \xc5\x9bmieci, Marek mia\xc5\x82 je ju\xc5\xbc dawno wynie\xc5\x9b\xc4\x87", "Wczoraj w sklepie widzia\xc5\x82em Ani\xc4\x99, star\xc4\x85 kole\xc5\xbcank\xc4\x99 z liceum.", "Jaki\xc5\x9b tydzie\xc5\x84 temu kupi\xc5\x82em sobie ksi\xc4\x85\xc5\xbck\xc4\x99, jest \xc5\x9bwietna, opowiada o historii pewnego czarodzieja.", "Chcieli\xc5\x9bmy i\xc5\x9b\xc4\x87 wczoraj do kina ale by\xc5\x82y tylko dwa wolne miejsca, a nas by\xc5\x82o a\xc5\xbc pi\xc4\x99ciu, wi\xc4\x99c sko\xc5\x84czylo si\xc4\x99 na wsp\xc3\xb3\xc5\x82nym graniu"];
 
   var Global.questions = ["Jakie miasto wymieni\xc5\x82em?", "Jakie miasto wymieni\xc5\x82em?", "Jak mia\xc5\x82 na imi\xc4\x99 ch\xc5\x82opak?", "Jak mia\xc5\x82a na imi\xc4\x99 dziewczyna?", "Kupiony przeze mnie przedmiot to?", "Ile by\xc5\x82o wolnych miejsc w kinie?"];
 
@@ -29,7 +29,7 @@
 "Gdy sko\xc5\x84cz\xc4\x99, podno\xc5\x9b r\xc4\x99ce w g\xc3\xb3r\xc4\x99 w kolejno\xc5\x9bci, jak\xc4\x85 Ci poda\xc5\x82em."
 ];
 
-  var Global.yourTurn = "Teraz Ty! Podnie\xc5\x9b r\xc4\x99ce w kolejno\xc5\x9bci, jak\xc4\x85 Ci poda\xc5\x82em.";
+  var Global.yourTurn = ["Teraz Ty! Podnie\xc5\x9b r\xc4\x99ce w kolejno\xc5\x9bci, jak\xc4\x85 Ci poda\xc5\x82em."];
   
   var Global.heyListen = [
 "Uwaga, s\xc5\x82uchaj!", 
@@ -55,12 +55,6 @@
 " Idziemy dalej!"
 ];
 
-  var Global.iSayPatternNow = [
-" Teraz m\xc3\xb3wi\xc4\x99 wz\xc3\xb3r.",
-" Teraz podam wz\xc3\xb3r.",
-" Teraz podam, jakie ruchy masz powt\xc3\xb3rzy\xc4\x87"
-];
-
 /////////////////////////////////////////////////
 //Sekcja odpowiedzi dialogowych
 /////////////////////////////////////////////////
@@ -79,20 +73,13 @@
 "A mo\xc5\xbce masz na co\xc5\x9b jeszcze ochot\xc4\x99?"
 ];
 
-  var Global.questions = [
+  var Global.questionsGreeting = [
 "Co tam?", 
 "Co mog\xc4\x99 dla Ciebie zrobi\xc4\x87?",
 "S\xc5\x82ucham uwa\xc5\xbcnie.",
 "Co u Ciebie?",
 "Jak tam?",
 "Co dzi\xc5\x9b robimy?"
-];
-
-  var Global.heyListen = [
-"Uwaga, s\xc5\x82uchaj!", 
-"S\xc5\x82uchaj uwa\xc5\xbcnie.", 
-"Pos\xc5\x82uchaj.",
-"Uwaga!"
 ];
 
   var Global.cantSee = [

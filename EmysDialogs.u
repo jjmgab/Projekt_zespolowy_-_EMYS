@@ -196,12 +196,12 @@ do(Global) {
 
   
   function d_AskWhatKindOfGame()
-  {
-    var whatAreWePlaying = [
-    "W co pogramy?",
-    "W jak\xc4\x85 gr\xc4\x99 chcia\xc5\x82by\xc5\x9b zagra\xc4\x87?",
-    "W jak\xc4\x85 gr\xc4\x99 zagramy?"
-    ];
+  {
+    var whatAreWePlaying = [
+    "W co pogramy?",
+    "W jak\xc4\x85 gr\xc4\x99 chcia\xc5\x82by\xc5\x9b zagra\xc4\x87?",
+    "W jak\xc4\x85 gr\xc4\x99 zagramy?"
+    ];
   
     robot.audio.recognition.pause = true;
     robot.audio.recognition.resultTag="";
@@ -1434,11 +1434,9 @@ do(Global) {
     robot.audio.recognition.resultTag="";
     robot.audio.recognition.result="";
     robot.audio.recognition.ResetGrammar;
-    if (robot.dialogue.language==0) robot.audio.recognition.LoadGrammar(_uFilesDir+"grammars/NewsEN.grxml");
-    if (robot.dialogue.language==1) robot.audio.recognition.LoadGrammar(_uFilesDir+"grammars/NewsPL.grxml"); 
-    if (robot.dialogue.language==2) robot.audio.recognition.LoadGrammar(_uFilesDir+"grammars/NewsPT.grxml");  
+    robot.audio.recognition.LoadGrammar(_uFilesDir+"grammars/NewsPL.grxml"); 
     //     
-    robot.dialogue.Say(robot.dialogue.speech_sequences[200+3.random][robot.dialogue.language],false);
+    robot.dialogue.Say(robot.dialogue.speech_sequences[200+3.random][1],false);
     robot.dialogue.ResetTimeout(-1);
     robot.audio.recognition.pause = false;
     
@@ -1457,7 +1455,7 @@ do(Global) {
       robot.dialogue.ResetTimeout(-1);
       robot.audio.recognition.pause = true;
       robot.dialogue.BeepSound();
-      robot.dialogue.Say(robot.dialogue.speech_sequences[200+3.random][robot.dialogue.language],false);
+      robot.dialogue.Say(robot.dialogue.speech_sequences[200+3.random][1],false);
       robot.audio.recognition.resultTag = "";
       robot.audio.recognition.result="";
       robot.audio.recognition.pause = false;
