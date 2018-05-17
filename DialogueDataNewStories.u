@@ -1,0 +1,123 @@
+{
+//plik nalezy dolaczyc do pliku konfiguracyjnego _CONFIG_.u
+//odpowiada za wszystkie teksty mowione Emysa podczas wykonywania zadan przez gracza
+
+
+/////////////////////////////////////////////////
+//sekcja StoryTeller
+/////////////////////////////////////////////////
+
+  var Global.stories = ["We Wroc\xc5\x82awiu mie\xc5\x9bci si\xc4\x99 najlepsza Politechnika w kraju.","W Krakowie znajduje si\xc4\x99 pi\xc4\x99kny zamek kr\xc3\xb3lewski, Wawel.", "Uzbiera\xc5\x82y si\xc4\x99 dwa worki \xc5\x9bmieci, Marek mia\xc5\x82 je ju\xc5\xbc dawno wynie\xc5\x9b\xc4\x87", "Wczoraj w sklepie widzia\xc5\x82em Ani\xc4\x99, star\xc4\x85 kole\xc5\xbcank\xc4\x99 z liceum.", "Jaki\xc5\x9b tydzie\xc5\x84 temu kupi\xc5\x82em sobie ksi\xc4\x85\xc5\xbck\xc4\x99, jest \xc5\x9bwietna, opowiada o historii pewnego czarodzieja.", "Chcieli\xc5\x9bmy i\xc5\x9b\xc4\x87 wczoraj do kina ale by\xc5\x82y tylko dwa wolne miejsca, a nas by\xc5\x82o a\xc5\xbc pi\xc4\x99ciu, wi\xc4\x99c sko\xc5\x84czylo si\xc4\x99 na wsp\xc3\xb3\xc5\x82nym graniu", "Mia\xc5\x82em do zrobienia przygotowanie z j\xc4\x99zyka polskiego, trzy zadania z matematyki oraz naukxc4\x99 na sprawdzian z historii", "Mam ochot\xc4\x99 na kaw\xc4\x99, chyba jestem troszk\xc4\x99 zm\xc4\x99czony"];
+
+  var Global.questions = ["Jakie miasto wymieni\xc5\x82em?", "Jakie miasto wymieni\xc5\x82em?", "Jak mia\xc5\x82 na imi\xc4\x99 ch\xc5\x82opak?", "Jak mia\xc5\x82a na imi\xc4\x99 dziewczyna?", "Kupiony przeze mnie przedmiot to?", "Ile by\xc5\x82o wolnych miejsc w kinie?", "Z jakiego pzedmiotu mia\xc5\x82em zrobi\xc4\x87 zadania?", "Na co mam ochot\xc4\x99?"];
+
+  var Global.answers = ["Wroc\xc5\x82aw", "Krak\xc3\xb3w", "Marek", "Ania", "Ksi\xc4\x85\xc5\xbca", "Dwa", "Z matematyki", "Na kaw\xc4\x99"];
+
+  var Global.checkStoryState = [false, false, false, false, false, false, false, false];
+ 
+/////////////////////////////////////////////////
+//sekcja SimonSays
+/////////////////////////////////////////////////
+
+  var Global.intro = [
+"Uwaga. Sta\xc5\x84 tak, \xc5\xbcebym Ci\xc4\x99 widzia\xc5\x82. \xc5\xbceby\xc5\x9bmy mogli razem zagra\xc4\x87!",
+
+"Super! Teraz Ci\xc4\x99 widz\xc4\x99",
+
+"S\xc5\x82uchaj, wyt\xc5\x82umacz\xc4\x99 Ci, o co chodzi.",
+
+"Gdy sko\xc5\x84cz\xc4\x99, podno\xc5\x9b r\xc4\x99ce w g\xc3\xb3r\xc4\x99 w kolejno\xc5\x9bci, jak\xc4\x85 Ci poda\xc5\x82em."
+];
+
+  var Global.yourTurn = ["Teraz Ty! Podnie\xc5\x9b r\xc4\x99ce w kolejno\xc5\x9bci, jak\xc4\x85 Ci poda\xc5\x82em."];
+  
+  var Global.heyListen = [
+"Uwaga, s\xc5\x82uchaj!", 
+"S\xc5\x82uchaj uwa\xc5\xbcnie.", 
+"Pos\xc5\x82uchaj.",
+"Uwaga!"
+];
+
+  var Global.iSayPatternNow = [
+" Teraz m\xc3\xb3wi\xc4\x99 wz\xc3\xb3r.",
+" Teraz podam wz\xc3\xb3r.",
+" Teraz podam, jakie ruchy masz powt\xc3\xb3rzy\xc4\x87"
+];
+
+  var Global.goodJob = [
+" dobra robota!", 
+" poprawny wz\xc3\xb3r.", 
+" powt\xc3\xb3rzy\xc5\x82e\xc5\x9b wz\xc3\xb3r dobrze!"
+];
+
+  var Global.letsGo = [
+" Czas na kolejny poziom!", 
+" Idziemy dalej!"
+];
+
+/////////////////////////////////////////////////
+//Sekcja odpowiedzi dialogowych
+/////////////////////////////////////////////////
+
+  var Global.greeting = [
+"Hej. ",
+"Cze\xc5\x9b\xc4\x87. ",
+"Witaj. "
+];
+
+  var Global.somethingElse = [
+"Mog\xc4\x99 co\xc5\x9b jeszcze dla ciebie zrobi\xc4\x87?",
+"Co\xc5\x9b jeszcze?",
+"Zrobimy co\xc5\x9b jeszcze?",
+"Chcia\xc5\x82by\xc5\x9b zrobi\xc4\x87 co\xc5\x9b jeszcze?",
+"A mo\xc5\xbce masz na co\xc5\x9b jeszcze ochot\xc4\x99?"
+];
+
+  var Global.questionsGreeting = [
+"Co tam?", 
+"Co mog\xc4\x99 dla Ciebie zrobi\xc4\x87?",
+"S\xc5\x82ucham uwa\xc5\xbcnie.",
+"Co u Ciebie?",
+"Jak tam?",
+"Co dzi\xc5\x9b robimy?"
+];
+
+  var Global.cantSee = [
+"Hej, czemu nic nie robisz?",
+"Nie widz\xc4\x99, \xc5\xbceby\xc5\x9b \xc4\x87wiczy\xc5\x82!",
+"Ju\xc5\xbc ze mn\xc4\x85 nie grasz?",
+"Halo, dlaczego nic si\xc4\x99 nie dzieje?"
+];
+
+  var Global.wellDone = [
+"Super!",
+"Fantastycznie!", 
+"Brawo!", 
+"Zgadza si\xc4\x99!"
+];
+
+  var Global.thatsAPity = [
+"Szkoda.", 
+"Dobrze, mam nadziej\xc4\x99, \xc5\xbce wkr\xc3\xb3tce zmienisz zdanie!", 
+"W porz\xc4\x85dku. Do zobaczenia nast\xc4\x99pnym razem!", 
+"Ech, dobrze.",
+"No dobra.",
+"Okej."
+];
+
+  var Global.again = [
+"Gramy dalej?",
+"Gramy jeszcze raz?",
+"Mo\xc5\xbce zagramy jeszcze raz?",
+"Co powiesz na jeszcze jedn\xc4\x85 gr\xc4\x99?"
+];
+
+  var Global.ohNo = [
+"Ojej, pomy\xc5\x82ka!", 
+"Pomyli\xc5\x82e\xc5\x9b si\xc4\x99!", 
+"Och! Z\xc5\x82y wz\xc3\xb3r!", 
+"Ojoj. Koniec gry...",
+"Ojej, nie uda\xc5\x82o Ci si\xc4\x99 powt\xc3\xb3rzy\xc4\x87 dobrze wzoru!"
+];
+ 
+};
