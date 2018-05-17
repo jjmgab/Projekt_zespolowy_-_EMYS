@@ -3,7 +3,7 @@
  *
  * Load this file in your server to run the graph.
  *
- * Created: Cz 17. maj 09:14:23 2018
+ * Created: Cz 17. maj 10:26:21 2018
  *      by: Gostai Studio 2.7
  *
  * WARNING! All changes made in this file will be lost!
@@ -38,27 +38,7 @@ var _root_Main_mk_1._nodes_ = Object.new;
 var _root_Main_mk_1._nodes_.START = fsm.State.create_("_root_Main_mk_1._nodes_.START", _root_Main_mk_1,
 function() {
 //#push 1 "START"
-//////////////////////////////////////////////////////////////// 
-  //
-  //    P O L I S H
-  //
-  ////////////////////////////////////////////////////////////////
-  //
-  // Polish UTF-8 chars - just for quick reference
-  //
-  // a	\xc4\x85  A  \xc4\x84
-  // c	\xc4\x87  C  \xc4\x86
-  // e	\xc4\x99	E  \xc4\x98
-  // l	\xc5\x82 	L  \xc5\x81
-  // n	\xc5\x84 	N  \xc5\x83
-  // o	\xc3\xb3	O  \xc3\x93
-  // s	\xc5\x9b	S  \xc5\x9a
-  // z,	\xc5\xba	Z, \xc5\xb9
-  // z.	\xc5\xbc	Z. \xc5\xbb
-	
-
 if (!hasSlot("trans")) var Global.trans = "";
-
 if (!hasSlot("counter")) var Global.counter = 0;
 
 //#pop
@@ -105,7 +85,7 @@ g:robot.competency.ActAlive(true),
 //Code executed after leaving the node
 
 //#pop
-}, false, [-438.892, -1242.96]);
+}, false, [-436.415, -1250.39]);
 
 //Waiting state declaration
 var _root_Main_mk_1._nodes_.Waiting = fsm.State.create_("_root_Main_mk_1._nodes_.Waiting", _root_Main_mk_1._nodes_.Unnamed,
@@ -116,7 +96,6 @@ function() {
 var finishedWaiting = false|
 
 while(true) {
-	//waituntil(finishedWaiting==false)|
 	sleep(1s)|
 	finishedWaiting = robot.competency.cWaitForCall()|
 	
@@ -128,7 +107,7 @@ while(true) {
 },
 //#pop
 }
-, true
+, false
 , 5
 , function() {
 //#push 1 "Waiting.enter"
@@ -148,12 +127,9 @@ Global.trans = "";
 var _root_Main_mk_1._nodes_.Compliment = fsm.State.create_("_root_Main_mk_1._nodes_.Compliment", _root_Main_mk_1._nodes_.Unnamed,
 function() {
 //#push 1 "Compliment"
-var compliment = [
-"Wi\xc4\x99c chod\xc5\xbamy na piwo!",
-"\xc5\x81adna dzi\xc5\x9b pogoda."
-];
+// MOWI KOMPLEMENT
 
-robot.body.neck.head.Say(Global.compliment[random(Global.compliment.size())], 4, 0);
+robot.body.neck.head.Say(Global.D_compliment[random(Global.D_compliment.size())], 4, 0);
 
 
 //#pop
@@ -179,20 +155,7 @@ function() {
 //#push 1 "Called"
 // PRZYWITANIE
 
-// --- ZMIENNE ---
-/*
-var questions = [
-"Co tam?", 
-"Co mog\xc4\x99 dla Ciebie zrobi\xc4\x87?",
-"S\xc5\x82ucham uwa\xc5\xbcnie.",
-"Co u Ciebie?",
-"Jak tam?",
-"Co dzi\xc5\x9b robimy?"
-];
-*/
-//robot.body.neck.head.ExpSmile(10,1)|
-
-var ret = robot.competency.cAskForBasic(Global.questionsGreeting[random(Global.questionsGreeting.size())]);
+var ret = robot.competency.cAskForBasic(Global.D_questions[random(Global.D_questions.size())]);
 
 echo(ret);
 Global.trans=robot.competency.WhatShouldRobotDo(ret);
@@ -234,7 +197,7 @@ robot.dialogue.SayTime();
 //Code executed after leaving the node
 
 //#pop
-}, false, [308.085, 702.442]);
+}, false, [244.891, 693.415]);
 
 //Introduce state declaration
 var _root_Main_mk_1._nodes_.Introduce = fsm.State.create_("_root_Main_mk_1._nodes_.Introduce", _root_Main_mk_1._nodes_.Unnamed,
@@ -256,7 +219,7 @@ robot.competency.Introduce();
 //Code executed after leaving the node
 
 //#pop
-}, false, [209.246, 642.671]);
+}, false, [146.052, 610.171]);
 
 //Game state declaration
 var _root_Main_mk_1._nodes_.Game = fsm.State.create_("_root_Main_mk_1._nodes_.Game", _root_Main_mk_1._nodes_.Unnamed,
@@ -293,21 +256,9 @@ function() {
 //#push 1 "SomethingElse"
 // COS JESZCZE?
 
-// --- ZMIENNE ---
-
-var somethingElse = [
-"Mog\xc4\x99 co\xc5\x9b jeszcze dla ciebie zrobi\xc4\x87?",
-"Co\xc5\x9b jeszcze?",
-"Zrobimy co\xc5\x9b jeszcze?",
-"Chcia\xc5\x82by\xc5\x9b zrobi\xc4\x87 co\xc5\x9b jeszcze?",
-"A mo\xc5\xbce masz na co\xc5\x9b jeszcze ochot\xc4\x99?"
-];
-
-////////////////////////////
-
 robot.body.neck.head.ExpNormal(1)|
 var ret = ""|
-ret=robot.competency.cAskYesNo(Global.somethingElse[random(Global.somethingElse.size())]);
+ret=robot.competency.cAskYesNo(Global.D_somethingElse[random(Global.D_somethingElse.size())]);
 
 if(ret == "YES")
 	Global.trans="found"
@@ -329,31 +280,6 @@ Global.trans="";
 
 //#pop
 }, false, [-424.489, 223.226]);
-
-//News state declaration
-var _root_Main_mk_1._nodes_.News = fsm.State.create_("_root_Main_mk_1._nodes_.News", _root_Main_mk_1._nodes_.Unnamed,
-function() {
-//#push 1 "News"
-var ret = robot.dialogue.AskWhatKindOfNews();
-
-if(ret != "TIMEOUT")
-	robot.dialogue.ReadNews(ret);
-//#pop
-}
-, false
-, 12
-, function() {
-//#push 1 "News.enter"
-//Code executed before entering the node
-
-//#pop
-}
-, function() {
-//#push 1 "News.leave"
-//Code executed after leaving the node
-
-//#pop
-}, false, [123.338, 606.188]);
 
 //Simon_Says_2 state declaration
 var _root_Main_mk_1._nodes_.Simon_Says_2 = fsm.State.create_("_root_Main_mk_1._nodes_.Simon_Says_2", _root_Main_mk_1._nodes_.Unnamed,
@@ -384,8 +310,8 @@ else Global.counter = 0;
   // z.	\xc5\xbc	Z. \xc5\xbb
 //#pop
 }
-, false
-, 13
+, true
+, 12
 , function() {
 //#push 1 "Simon_Says_2.enter"
 //Code executed before entering the node
@@ -405,18 +331,6 @@ function() {
 //#push 1 "letsMove_2"
 // TERAZ RUSZA SIE GRACZ
 
-// --- Zmienne ---
-/*
-var wellDone = [
-"Super!",
-"Fantastycznie!", 
-"Brawo!", 
-"\xc5\x81a\xc5\x82!" // wow ;)
-];
-
-var yourTurn = "Teraz Ty! Podnie\xc5\x9b r\xc4\x99ce w kolejno\xc5\x9bci, jak\xc4\x85 Ci poda\xc5\x82em.";
-*/
-
 var _timeout = 20;
 
 var Rhand =[];	// prawa reka
@@ -435,8 +349,8 @@ var moveCount = Global.pattern.size(); // ile ruchow jest do wykonania
 
 ///////////////////////////////////////////////////
 
-if (not Global.isEmysThere) robot.audio.speech.Say(Global.yourTurn[random(Global.yourTurn.size())], 0)
-else robot.body.neck.head.Say(Global.yourTurn[random(Global.yourTurn.size())], 4, 0)|
+if (not Global.isEmysThere) robot.audio.speech.Say(Global.SS_yourTurn[random(Global.SS_yourTurn.size())], 0)
+else robot.body.neck.head.Say(Global.SS_yourTurn[random(Global.SS_yourTurn.size())], 4, 0)|
 sleep(250ms);
 
 every (1s) {
@@ -484,10 +398,15 @@ done = false|
 Global.currentPattern.insertBack(move)|
 move=""|
 
-if (not Global.isEmysThere)
-	robot.audio.speech.Say(Global.wellDone[random(Global.wellDone.size())], 0)
-else
-	robot.body.neck.head.Say(Global.wellDone[random(Global.wellDone.size())], 4, 0)|
+robot.audio.player.Play(_uFilesDir+"sounds/samples/confirm.wav")|
+
+if ((Global.counter % 2 == 0) and (Global.counter != 0)) {
+	if (not Global.isEmysThere)
+		robot.audio.speech.Say(Global.D_wellDone[random(Global.D_wellDone.size())], 0)
+	else
+		robot.body.neck.head.Say(Global.D_wellDone[random(Global.D_wellDone.size())], 4, 0);
+}|
+	
 sleep(500ms)|
 
 
@@ -501,7 +420,7 @@ at (_timeout <= 0 ) Global.trans = "cantsee",
 //#pop
 }
 , false
-, 14
+, 13
 , function() {
 //#push 1 "letsMove_2.enter"
 //Code executed before entering the node
@@ -523,36 +442,14 @@ function() {
 //#push 1 "OK_2"
 // SUKCES
 
-// --- ZMIENNE ---
-/*
-var wellDone = [
-"Brawo,", 
-"\xc5\x9awietnie,", 
-"Super,", 
-"Fantastycznie,"
-];
-
-var goodJob = [
-" dobra robota!", 
-" poprawny wz\xc3\xb3r.", 
-" powt\xc3\xb3rzy\xc5\x82e\xc5\x9b wz\xc3\xb3r dobrze!"
-];
-
-var letsGo = [
-" Czas na kolejny poziom!", 
-" Idziemy dalej!"
-];
-*/
-//////////////////////////////////////////
-
 robot.body.neck.head.ExpNormal(3)|
 robot.body.neck.head.ExpHappy(10,1)|
 
 // wellDone + goodJob + letsGo
 if (not Global.isEmysThere)
-	robot.audio.speech.Say(Global.wellDone[random(Global.wellDone.size())] + Global.goodJob[random(Global.goodJob.size())] + Global.letsGo[random(Global.letsGo.size())], 0)
+	robot.audio.speech.Say(Global.D_wellDone[random(Global.D_wellDone.size())] + Global.SS_goodJob[random(Global.SS_goodJob.size())] + Global.SS_letsGo[random(Global.SS_letsGo.size())], 0)
 else
-	robot.body.neck.head.Say(Global.wellDone[random(Global.wellDone.size())] + Global.goodJob[random(Global.goodJob.size())] + Global.letsGo[random(Global.letsGo.size())], 4, 0)|
+	robot.body.neck.head.Say(Global.D_wellDone[random(Global.D_wellDone.size())] + Global.SS_goodJob[random(Global.SS_goodJob.size())] + Global.SS_letsGo[random(Global.SS_letsGo.size())], 4, 0)|
 
 Global.points += 1|
 sleep(500ms)|
@@ -560,7 +457,7 @@ Global.trans = "said";
 //#pop
 }
 , false
-, 15
+, 14
 , function() {
 //#push 1 "OK_2.enter"
 //Code executed before entering the node
@@ -611,37 +508,24 @@ else
   Global.currentPattern = [];
 	
 //////////////////////////////////////////////////
-/*
-// tekst wprowadzajacy gracza
-var intro = [
-"Uwaga. Sta\xc5\x84 tak, \xc5\xbcebym Ci\xc4\x99 widzia\xc5\x82. \xc5\xbceby\xc5\x9bmy mogli razem zagra\xc4\x87!",
 
-"Super! Teraz Ci\xc4\x99 widz\xc4\x99",
-
-"S\xc5\x82uchaj, wyt\xc5\x82umacz\xc4\x99 Ci, o co chodzi.",
-
-"Gdy sko\xc5\x84cz\xc4\x99, podno\xc5\x9b r\xc4\x99ce w g\xc3\xb3r\xc4\x99 w kolejno\xc5\x9bci, jak\xc4\x85 Ci poda\xc5\x82em."
-];
-*/
-//////////////////////////////////////////////////
-
-if (not Global.isEmysThere) robot.audio.speech.Say(Global.intro[0], 0)
-else robot.body.neck.head.Say(Global.intro[0], 4, 0);
+if (not Global.isEmysThere) robot.audio.speech.Say(Global.SS_intro[0], 0)
+else robot.body.neck.head.Say(Global.SS_intro[0], 4, 0);
 sleep(1s);
 
 { // czeka dopoki nie zobaczy gracza
   waituntil(robot.video.humanDetector.visible~1s);
 	
-  if (not Global.isEmysThere) robot.audio.speech.Say(Global.intro[1], 0)
-	else robot.body.neck.head.Say(Global.intro[1], 4, 0);
+  if (not Global.isEmysThere) robot.audio.speech.Say(Global.SS_intro[1], 0)
+	else robot.body.neck.head.Say(Global.SS_intro[1], 4, 0);
 	sleep(250ms);
 	
-	if (not Global.isEmysThere) robot.audio.speech.Say(Global.intro[2],0)
-	else robot.body.neck.head.Say(Global.intro[2], 4, 0);
+	if (not Global.isEmysThere) robot.audio.speech.Say(Global.SS_intro[2],0)
+	else robot.body.neck.head.Say(Global.SS_intro[2], 4, 0);
 	sleep(250ms);
 	
-	if (not Global.isEmysThere) robot.audio.speech.Say(Global.intro[3],0)
-	else robot.body.neck.head.Say(Global.intro[3], 4, 0);
+	if (not Global.isEmysThere) robot.audio.speech.Say(Global.SS_intro[3],0)
+	else robot.body.neck.head.Say(Global.SS_intro[3], 4, 0);
 	sleep(250ms);
 	
 	Global.trans = "iSee";
@@ -650,7 +534,7 @@ sleep(1s);
 //#pop
 }
 , true
-, 16
+, 15
 , function() {
 //#push 1 "start_2.enter"
 //Code executed before entering the node
@@ -669,24 +553,9 @@ var _root_Main_mk_1._nodes_.sayPattern_2 = fsm.State.create_("_root_Main_mk_1._n
 function() {
 //#push 1 "sayPattern_2"
 // PODANIE WZORU DO POWTORZENIA
-/*
-var heyListen = [
-"Uwaga, s\xc5\x82uchaj!", 
-"S\xc5\x82uchaj uwa\xc5\xbcnie.", 
-"Pos\xc5\x82uchaj.",
-"Uwaga!"
-];
 
-var iSayPatternNow = [
-" Teraz m\xc3\xb3wi\xc4\x99 wz\xc3\xb3r.",
-" Teraz podam wz\xc3\xb3r.",
-" Teraz podam, jakie ruchy masz powt\xc3\xb3rzy\xc4\x87"
-];
-*/
-//////////////////////////////////////////////
-
-if (not Global.isEmysThere) robot.audio.speech.Say(Global.heyListen[random(Global.heyListen.size())] + Global.iSayPatternNow[random(Global.iSayPatternNow.size())],0)
-else robot.body.neck.head.Say(Global.heyListen[random(Global.heyListen.size())] + Global.iSayPatternNow[random(Global.iSayPatternNow.size())], 4, 0);
+if (not Global.isEmysThere) robot.audio.speech.Say(Global.SS_heyListen[random(Global.SS_heyListen.size())] + Global.SS_iSayPatternNow[random(Global.SS_iSayPatternNow.size())],0)
+else robot.body.neck.head.Say(Global.SS_heyListen[random(Global.SS_heyListen.size())] + Global.SS_iSayPatternNow[random(Global.SS_iSayPatternNow.size())], 4, 0);
 sleep(500ms);
 
 for (var move : Global.pattern) { // wymienia kolejne elementy listy ruchow
@@ -710,7 +579,7 @@ sleep(200ms);
 //#pop
 }
 , false
-, 17
+, 16
 , function() {
 //#push 1 "sayPattern_2.enter"
 //Code executed before entering the node
@@ -735,7 +604,7 @@ else Global.trans = "patternBad";
 //#pop
 }
 , false
-, 18
+, 17
 , function() {
 //#push 1 "checkIfDoneWell_2.enter"
 //Code executed before entering the node
@@ -759,11 +628,13 @@ robot.body.neck.head.ExpNormal(1)|
 
 echo("Adding");
 Global.pattern.insertBack(Global.availablePatterns[random(Global.availablePatterns.size())]);
-echo("Added");
+echo("Added");
+
+if (Global.pattern.size() < 2) Global.trans = "more_moves";
 //#pop
 }
 , false
-, 19
+, 18
 , function() {
 //#push 1 "addToPattern_2.enter"
 //Code executed before entering the node
@@ -775,7 +646,7 @@ Global.trans = "";
 //Code executed after leaving the node
 
 //#pop
-}, false, [144.661, -142.222]);
+}, false, [109.307, -161.139]);
 
 //notOK_2 state declaration
 var _root_Main_mk_1._nodes_.notOK_2 = fsm.State.create_("_root_Main_mk_1._nodes_.notOK_2", _root_Main_mk_1._nodes_.Simon_Says_2,
@@ -783,45 +654,17 @@ function() {
 //#push 1 "notOK_2"
 // PORAZKA
 
-// --- ZMIENNE ---
-/*
-var thatsAPity = [
-"Szkoda.", 
-"Dobrze, mam nadziej\xc4\x99, \xc5\xbce wkr\xc3\xb3tce zmienisz zdanie!", 
-"W porz\xc4\x85dku. Do zobaczenia nast\xc4\x99pnym razem!", 
-"Ech, dobrze.",
-"No dobra.",
-"Okej."
-];
-
-var ohNo = [
-"Ojej, pomy\xc5\x82ka!", 
-"Pomyli\xc5\x82e\xc5\x9b si\xc4\x99!", 
-"Och! Z\xc5\x82y wz\xc3\xb3r!", 
-"Ojoj. Koniec gry...",
-"Ojej, nie uda\xc5\x82o Ci si\xc4\x99 powt\xc3\xb3rzy\xc4\x87 dobrze wzoru!"
-];
-
-var again = [
-"Gramy dalej?",
-"Gramy jeszcze raz?",
-"Mo\xc5\xbce zagramy jeszcze raz?",
-"Co powiesz na jeszcze jedn\xc4\x85 gr\xc4\x99?"
-];
-*/
-/////////////////////////////////////
-
 robot.body.neck.head.ExpNormal(1)|
 robot.body.neck.head.ExpSad(10,1)|
 
 if (not Global.isEmysThere)
-	robot.audio.speech.Say(Global.ohNo[random(Global.ohNo.size())] + " Zdobyte punkty: " + Global.points, 0)
+	robot.audio.speech.Say(Global.D_ohNo[random(Global.D_ohNo.size())] + " Zdobyte punkty: " + Global.points, 0)
 else
-	robot.body.neck.head.Say(Global.ohNo[random(Global.ohNo.size())] + " Zdobyte punkty: " + Global.points, 4, 0)|
+	robot.body.neck.head.Say(Global.D_ohNo[random(Global.D_ohNo.size())] + " Zdobyte punkty: " + Global.points, 4, 0)|
 sleep(500ms);
 
 
-var ret = robot.competency.cAskYesNo(Global.again[random(Global.again.size())]);
+var ret = robot.competency.cAskYesNo(Global.D_again[random(Global.D_again.size())]);
 
 // koniec gry
 if(ret=="NO" || ret=="TIMEOUT"){
@@ -830,9 +673,9 @@ if(ret=="NO" || ret=="TIMEOUT"){
 	if (Global.isEmysThere) robot.body.neck.head.ExpSad(10,1)|
 	
 	if (not Global.isEmysThere)
-		robot.audio.speech.Say(Global.thatsAPity[random(Global.thatsAPity.size())], 0)
+		robot.audio.speech.Say(Global.D_thatsAPity[random(Global.D_thatsAPity.size())], 0)
 	else
-		robot.body.neck.head.Say(Global.thatsAPity[random(Global.thatsAPity.size())], 4, 0);
+		robot.body.neck.head.Say(Global.D_thatsAPity[random(Global.D_thatsAPity.size())], 4, 0);
 		
 	robot.audio.speech.rate=0;
 	Global.trans="Simon_end";
@@ -844,7 +687,7 @@ if(ret=="YES") Global.trans="Simon_begin";
 //#pop
 }
 , false
-, 20
+, 19
 , function() {
 //#push 1 "notOK_2.enter"
 //Code executed before entering the node
@@ -862,26 +705,19 @@ Global.trans = "";
 var _root_Main_mk_1._nodes_.cantSee = fsm.State.create_("_root_Main_mk_1._nodes_.cantSee", _root_Main_mk_1._nodes_.Simon_Says_2,
 function() {
 //#push 1 "cantSee"
-/*
-var cantSee = [
-"Hej, czemu nic nie robisz?",
-"Nie widz\xc4\x99, \xc5\xbceby\xc5\x9b \xc4\x87wiczy\xc5\x82!",
-"Ju\xc5\xbc ze mn\xc4\x85 nie grasz?",
-"Halo, dlaczego nic si\xc4\x99 nie dzieje?"
-];
-*/
+// GDY EMYS NIE WIDZI, ZE GRACZ COS ROBI
 
 robot.body.neck.head.ExpNormal(1)|
 robot.body.neck.head.ExpDisgust(10,1)|
 sleep(250ms);
 
-if (not Global.isEmysThere) robot.audio.speech.Say(Global.cantSee[random(Global.cantSee.size())], 0)
-else robot.body.neck.head.Say(Global.cantSee[random(Global.cantSee.size())], 4, 0)|
+if (not Global.isEmysThere) robot.audio.speech.Say(Global.D_cantSee[random(Global.D_cantSee.size())], 0)
+else robot.body.neck.head.Say(Global.D_cantSee[random(Global.D_cantSee.size())], 4, 0)|
 sleep(250ms);
 //#pop
 }
 , false
-, 29
+, 20
 , function() {
 //#push 1 "cantSee.enter"
 //Code executed before entering the node
@@ -895,6 +731,28 @@ Global.trans = "";
 //#pop
 }, false, [43.5901, 110.585]);
 
+//lessThan2Moves state declaration
+var _root_Main_mk_1._nodes_.lessThan2Moves = fsm.State.create_("_root_Main_mk_1._nodes_.lessThan2Moves", _root_Main_mk_1._nodes_.Simon_Says_2,
+function() {
+//#push 1 "lessThan2Moves"
+
+//#pop
+}
+, false
+, 59
+, function() {
+//#push 1 "lessThan2Moves.enter"
+//Code executed before entering the node
+Global.trans = "";
+//#pop
+}
+, function() {
+//#push 1 "lessThan2Moves.leave"
+//Code executed after leaving the node
+
+//#pop
+}, false, [219.842, -280.609]);
+
 //Story_Teller_2 state declaration
 var _root_Main_mk_1._nodes_.Story_Teller_2 = fsm.State.create_("_root_Main_mk_1._nodes_.Story_Teller_2", _root_Main_mk_1._nodes_.Unnamed,
 function() {
@@ -903,7 +761,7 @@ function() {
 //#pop
 }
 , false
-, 32
+, 31
 , function() {
 //#push 1 "Story_Teller_2.enter"
 //Code executed before entering the node
@@ -933,7 +791,7 @@ if(ret=="YES")Global.trans="storyteller_taskbegin";
 //#pop
 }
 , true
-, 33
+, 32
 , function() {
 //#push 1 "StartGame.enter"
 //Code executed before entering the node
@@ -951,23 +809,15 @@ Global.trans = "";
 var _root_Main_mk_1._nodes_.Story_Teller_Task = fsm.State.create_("_root_Main_mk_1._nodes_.Story_Teller_Task", _root_Main_mk_1._nodes_.Story_Teller_2,
 function() {
 //#push 1 "Story_Teller_Task"
-/*
-var wellDone = [
-"Super!",
-"Fantastycznie!", 
-"Brawo!", 
-"Zgadza si\xc4\x99!"
-];
-*/
 
-var storyNr = random(Global.stories.size());
+var storyNr = random(Global.ST_stories.size());
 
-var ret = robot.competency.cTellStory(Global.stories[storyNr], Global.questions[storyNr], Global.answers[storyNr]);
+var ret = robot.competency.cTellStory(Global.ST_stories[storyNr], Global.ST_questions[storyNr], Global.ST_answers[storyNr]);
 storyNr++;
 
 if (ret=="CORRECT"+storyNr)
 {
-  robot.body.neck.head.Say(Global.wellDone[random(Global.wellDone.size())], 4, 0);
+  robot.body.neck.head.Say(Global.D_wellDone[random(Global.D_wellDone.size())], 4, 0);
 	Global.trans = "storyteller_taskdone";
 }
 else if (ret=="TIMEOUT")
@@ -977,13 +827,13 @@ else if (ret=="TIMEOUT")
 }
 else // TIMEOUT
 {	
-  robot.body.neck.head.Say("To nie to!", 4, 0);
+  robot.body.neck.head.Say(Global.D_ohNo[random(Global.D_ohNo.size())], 4, 0);
 	Global.trans = "storyteller_taskdone";
 };
 //#pop
 }
 , false
-, 34
+, 33
 , function() {
 //#push 1 "Story_Teller_Task.enter"
 //Code executed before entering the node
@@ -1001,29 +851,12 @@ Global.trans = "";
 var _root_Main_mk_1._nodes_.Story_Teller_Done = fsm.State.create_("_root_Main_mk_1._nodes_.Story_Teller_Done", _root_Main_mk_1._nodes_.Story_Teller_2,
 function() {
 //#push 1 "Story_Teller_Done"
-/*
-var thatsAPity = [
-"Szkoda.", 
-"Dobrze, mam nadziej\xc4\x99, \xc5\xbce wkr\xc3\xb3tce zmienisz zdanie!", 
-"W porz\xc4\x85dku. Do zobaczenia nast\xc4\x99pnym razem!", 
-"Ech, dobrze.",
-"No dobra.",
-"Okej."
-];
 
-var again = [
-"Gramy dalej?",
-"Gramy jeszcze raz?",
-"Mo\xc5\xbce zagramy jeszcze raz?",
-"Co powiesz na jeszcze jedn\xc4\x85 gr\xc4\x99?"
-];
-*/
-
-var ret = robot.competency.cAskYesNo(Global.again[random(Global.again.size())]);
+var ret = robot.competency.cAskYesNo(Global.D_again[random(Global.D_again.size())]);
 if(ret=="NO" || ret=="TIMEOUT"){
 	robot.audio.speech.rate=-3;
 	robot.body.neck.head.ExpSad(10,1)|
-	robot.body.neck.head.Say(Global.thatsAPity[random(Global.thatsAPity.size())], 4, 0);
+	robot.body.neck.head.Say(Global.D_thatsAPity[random(Global.D_thatsAPity.size())], 4, 0);
 	robot.audio.speech.rate=0;
 	Global.trans="storyteller_end";
 };
@@ -1032,7 +865,7 @@ if(ret=="YES")Global.trans="storyteller_begin";
 //#pop
 }
 , false
-, 35
+, 34
 , function() {
 //#push 1 "Story_Teller_Done.enter"
 //Code executed before entering the node
@@ -1052,20 +885,12 @@ function() {
 //#push 1 "Hej"
 // PRZYWITANIE
 
-// --- ZMIENNE ---
-
-var greeting = [
-"Hej. ",
-"Cze\xc5\x9b\xc4\x87. ",
-"Witaj. "
-];
-
-robot.body.neck.head.Say(Global.greeting[random(Global.greeting.size())], 4, 0);
+robot.body.neck.head.Say(Global.D_greeting[random(Global.D_greeting.size())], 4, 0);
 
 //#pop
 }
 , false
-, 57
+, 38
 , function() {
 //#push 1 "Hej.enter"
 //Code executed before entering the node
@@ -1087,7 +912,7 @@ function() {
 //#pop
 }
 , false
-, 60
+, 56
 , function() {
 //#push 1 "buf.enter"
 //Code executed before entering the node
@@ -1114,6 +939,8 @@ fsm.Transition.create_(_root_Main_mk_1._nodes_.Simon_Says_2, _root_Main_mk_1._no
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Simon_Says_2, _root_Main_mk_1._nodes_.notOK_2, _root_Main_mk_1._nodes_.start_2, "Global.trans==\"Simon_begin\"", "_root_Main_mk_1._nodes_.Transition_17_2");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Simon_Says_2, _root_Main_mk_1._nodes_.letsMove_2, _root_Main_mk_1._nodes_.cantSee, "Global.trans == \"cantsee\"", "_root_Main_mk_1._nodes_.Transition_9");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Simon_Says_2, _root_Main_mk_1._nodes_.cantSee, _root_Main_mk_1._nodes_.checkIfDoneWell_2, "done?", "_root_Main_mk_1._nodes_.Transition_10");
+fsm.Transition.create_(_root_Main_mk_1._nodes_.Simon_Says_2, _root_Main_mk_1._nodes_.addToPattern_2, _root_Main_mk_1._nodes_.lessThan2Moves, "Global.trans == \"more_moves\"", "_root_Main_mk_1._nodes_.Transition_12");
+fsm.Transition.create_(_root_Main_mk_1._nodes_.Simon_Says_2, _root_Main_mk_1._nodes_.lessThan2Moves, _root_Main_mk_1._nodes_.addToPattern_2, "done?", "_root_Main_mk_1._nodes_.Transition_13");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Story_Teller_2, _root_Main_mk_1._nodes_.StartGame, _root_Main_mk_1._nodes_.Story_Teller_Task, "Global.trans == \"storyteller_taskbegin\"", "_root_Main_mk_1._nodes_.Transition_23_2");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Story_Teller_2, _root_Main_mk_1._nodes_.Story_Teller_Task, _root_Main_mk_1._nodes_.Story_Teller_Done, "Global.trans == \"storyteller_taskdone\"", "_root_Main_mk_1._nodes_.Transition_25_2");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Story_Teller_2, _root_Main_mk_1._nodes_.Story_Teller_Done, _root_Main_mk_1._nodes_.Story_Teller_Task, "Global.trans == \"storyteller_begin\"", "_root_Main_mk_1._nodes_.Transition_28");
@@ -1133,8 +960,6 @@ fsm.Transition.create_(_root_Main_mk_1._nodes_.Unnamed, _root_Main_mk_1._nodes_.
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Unnamed, _root_Main_mk_1._nodes_.SomethingElse, _root_Main_mk_1._nodes_.Called, "Global.trans==\"found\"", "_root_Main_mk_1._nodes_.Transition_24");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Unnamed, _root_Main_mk_1._nodes_.Game, _root_Main_mk_1._nodes_.Story_Teller_2, "Global.trans == \"storyteller\"", "_root_Main_mk_1._nodes_.Transition_23");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Unnamed, _root_Main_mk_1._nodes_.Story_Teller_2, _root_Main_mk_1._nodes_.Game, "Global.trans == \"storyteller_end\"", "_root_Main_mk_1._nodes_.Transition_25");
-fsm.Transition.create_(_root_Main_mk_1._nodes_.Unnamed, _root_Main_mk_1._nodes_.Called, _root_Main_mk_1._nodes_.News, "Global.trans == \"news\"", "_root_Main_mk_1._nodes_.Transition_26");
-fsm.Transition.create_(_root_Main_mk_1._nodes_.Unnamed, _root_Main_mk_1._nodes_.News, _root_Main_mk_1._nodes_.buf, "done?", "_root_Main_mk_1._nodes_.Transition_27");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Unnamed, _root_Main_mk_1._nodes_.Hej, _root_Main_mk_1._nodes_.Called, "done?", "_root_Main_mk_1._nodes_.Transition_8");
 fsm.Transition.create_(_root_Main_mk_1._nodes_.Unnamed, _root_Main_mk_1._nodes_.buf, _root_Main_mk_1._nodes_.SomethingElse, "done?", "_root_Main_mk_1._nodes_.Transition_11");
 fsm.Transition.create_(_root_Main_mk_1, _root_Main_mk_1._nodes_.START, _root_Main_mk_1._nodes_.Unnamed, "done?", "_root_Main_mk_1._nodes_.Transition");
