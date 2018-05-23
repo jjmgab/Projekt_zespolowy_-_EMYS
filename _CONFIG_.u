@@ -205,7 +205,7 @@ do (Global) {
 						// true - check all servos aviability
     						// false - add servos without aviability checking (faster)
   // Set port name
-  var _com_head = "COM5";			// head serial port name
+  var _com_head = "COM4";			// head serial port name
   //
   //		 __________
   //	       /     s1     \ 
@@ -451,7 +451,7 @@ do (Global) {
   // Start up file:
   // load your own uFiles ["file1.u","file2.u"], set [] if not
   //
-  var _CompetencyManagerFiles 	= ["Simple_EMYS_with_Kinect.u","EmysDialogs.u","EmysBehaviours.u", "DialogueData.u"];
+  var _CompetencyManagerFiles 	= ["Simple_EMYS_with_Kinect.u","EmysDialogs.u","EmysBehaviours.u", "DialogueData.u", "SpeechSequences.u"];
   //
   ////////////////////////////////////////////////////////
   //
