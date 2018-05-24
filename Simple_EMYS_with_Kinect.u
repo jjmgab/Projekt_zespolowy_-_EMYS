@@ -104,8 +104,8 @@ do(Global) {
 	Global.trans = "saytime"
     else if(work=="PLAY")
 	Global.trans = "game"
-    else if(work=="NEWS")
-	Global.trans = "news"
+    else if(work=="HELP")
+	Global.trans = "help"
     else if(work=="INTRODUCE")
 	Global.trans="introduce"
     else
@@ -194,7 +194,7 @@ do(Global) {
     robot.audio.player.Play(_uFilesDir+"sounds/samples/down_double_beep.mp3");
     return "TIMEOUT";
   };
- 
+ 
  
   function c_AskWhatKindOfNews(){
     robot.audio.recognition.pause = true;

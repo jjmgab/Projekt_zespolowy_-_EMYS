@@ -77,6 +77,7 @@
           <item>historie</item>
           <item>historyjki</item>
 		  <item>opowiadania</item>
+		  <item>skojarzenia</item>
         </one-of>
     </rule>
     <rule id="Back" scope="private">

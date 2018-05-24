@@ -451,7 +451,7 @@ do (Global) {
   // Start up file:
   // load your own uFiles ["file1.u","file2.u"], set [] if not
   //
-  var _CompetencyManagerFiles 	= ["Simple_EMYS_with_Kinect.u","EmysDialogs.u","EmysBehaviours.u", "DialogueData.u", "SpeechSequences.u"];
+  var _CompetencyManagerFiles 	= ["Simple_EMYS_with_Kinect.u","EmysDialogs.u","EmysBehaviours.u", "DialogueData.u", "SpeechSequences.u", "Game1z10.u"];
   //
   ////////////////////////////////////////////////////////
   //

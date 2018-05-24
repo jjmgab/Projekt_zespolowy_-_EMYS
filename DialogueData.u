@@ -61,7 +61,7 @@ SimonSays:
   "Jaki\xc5\x9b tydzie\xc5\x84 temu kupi\xc5\x82em sobie ksi\xc4\x85\xc5\xbck\xc4\x99, jest \xc5\x9bwietna, opowiada o historii pewnego czarodzieja.", 
   "Chcieli\xc5\x9bmy i\xc5\x9b\xc4\x87 wczoraj do kina ale by\xc5\x82y tylko dwa wolne miejsca, a nas by\xc5\x82o a\xc5\xbc pi\xc4\x99ciu, wi\xc4\x99c sko\xc5\x84czylo si\xc4\x99 na wsp\xc3\xb3\xc5\x82nym graniu",
   "Mia\xc5\x82em do zrobienia przygotowanie z j\xc4\x99zyka polskiego, trzy zadania z matematyki oraz naukxc4\x99 na sprawdzian z historii", 
-  "Mam ochot\xc4\x99 na kaw\xc4\x99, chyba jestem troszk\xc4\x99 zm\xc4\x99czony",
+  "Mam ochot\xc4\x99 na kaw\xc4\x99, chyba jestem troszk\xc4\x99 zm\xc4\x99czony",
   "Wyde\xc5\x82em dzisiaj 31 z\xc5\x82otych na obiad w restauracji, a potem jeszcze 19 na pami\xc4\x85tki"
   ];
 
@@ -73,7 +73,7 @@ SimonSays:
   "Kupiony przeze mnie przedmiot to?", 
   "Ile by\xc5\x82o wolnych miejsc w kinie?", 
   "Z jakiego pzedmiotu mia\xc5\x82em zrobi\xc4\x87 zadania?", 
-  "Na co mam ochot\xc4\x99?"
+  "Na co mam ochot\xc4\x99?",
   "Ile wyda\xc5\x82em pieni\xc4\x99dzy?"
   ];
 
@@ -85,7 +85,7 @@ SimonSays:
   "Ksi\xc4\x85\xc5\xbca", 
   "Dwa", 
   "Z matematyki", 
-  "Na kaw\xc4\x99"
+  "Na kaw\xc4\x99",
   "Pi\xc4\x99\xc4\x87dziesi\xc4\x85t"
   ];
 

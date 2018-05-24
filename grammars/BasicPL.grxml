@@ -211,12 +211,9 @@
         <tag>PLAY</tag>
         <one-of>
           <item> EMYS zagrajmy </item>
-          <item> EMYS pouczmy się kolorów </item>
-          <item> EMYS pozgadujmy kolory </item>
-          <item> EMYS pograjmy w kolory </item>
-          <item> EMYS zagrajmy w kolory </item>
+		  <item> EMYS zagrajmy w grę </item>
+		  <item> EMYS chcę pograć </item>
           <item> EMYS pobawmy się </item>
-          <item> EMYS pobawmy się w kolory</item>
         </one-of>
         <one-of>
           <item> proszę </item>
@@ -234,6 +231,17 @@
           <item> </item>
         </one-of>
 	  </item>
+	  <item>
+        <tag>HELP</tag>
+        <one-of>
+          <item> EMYS co potrafisz </item>
+		  <item> EMYS co umiesz zrobić </item>
+		  <item> EMYS pomocy </item>
+          <item> EMYS ratunku </item>
+		  <item> EMYS co umiesz </item>
+		  <item> EMYS co wiesz </item>
+        </one-of>
+      </item>
 	  <item>
 		<tag>NOTHING</tag>
 		<one-of>
