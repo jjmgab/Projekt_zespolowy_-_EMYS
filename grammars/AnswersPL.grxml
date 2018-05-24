@@ -31,6 +31,21 @@
       <item>
         Dwa<tag>CORRECT6</tag>
       </item>
+      <item>
+        Z matematyki<tag>CORRECT7</tag>
+      </item>
+      <item>
+        Matematyka<tag>CORRECT7</tag>
+      </item>
+      <item>
+        Na kawę<tag>CORRECT8</tag>
+      </item>
+      <item>
+        Kawa<tag>CORRECT8</tag>
+      </item>
+      <item>
+        Pięćdziesiąt<tag>CORRECT9</tag>
+      </item>
     </one-of>
   </rule>
 
