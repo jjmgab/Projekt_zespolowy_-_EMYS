@@ -6,6 +6,7 @@
 			<item><ruleref uri="#Learn"/></item>
 			<item><ruleref uri="#Simon"/></item>
 			<item><ruleref uri="#Story"/></item>
+			<item><ruleref uri="#Quiz"/></item>
 			<item><ruleref uri="#Back"/></item>
 			<item><ruleref uri="#Repeat"/></item>
 		</one-of>
@@ -80,7 +81,20 @@
 		  <item>skojarzenia</item>
         </one-of>
     </rule>
-    <rule id="Back" scope="private">
+    <rule id="Quiz" scope="private">
+        <tag>QUIZ</tag>
+        <one-of>
+          <item>w</item>
+          <item></item>
+        </one-of>
+        <one-of>
+          <item>jeden z dziesięciu</item>
+          <item>quiz</item>
+		  <item>test</item>
+		  <item>pytania</item>
+        </one-of>
+    </rule>
+	<rule id="Back" scope="private">
 		<tag>BACK</tag>
 		<one-of>
 			<item>wróć</item>	
