@@ -46,6 +46,30 @@
       <item>
         Pięćdziesiąt<tag>CORRECT9</tag>
       </item>
+      <item>
+        Pięć<tag>CORRECT10</tag>
+      </item>
+      <item>
+        Na pięć<tag>CORRECT10</tag>
+      </item>
+      <item>
+        Trzy<tag>CORRECT11</tag>
+      </item>
+      <item>
+        Łestern<tag>CORRECT12</tag>
+      </item>
+      <item>
+        Wilki<tag>CORRECT13</tag>
+      </item>
+      <item>
+        Cztery<tag>CORRECT14</tag>
+      </item>
+      <item>
+        Austria<tag>CORRECT15</tag>
+      </item>
+      <item>
+        Z Austrii<tag>CORRECT15</tag>
+      </item>
     </one-of>
   </rule>
 

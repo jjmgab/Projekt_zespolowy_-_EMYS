@@ -62,7 +62,13 @@ SimonSays:
   "Chcieli\xc5\x9bmy i\xc5\x9b\xc4\x87 wczoraj do kina ale by\xc5\x82y tylko dwa wolne miejsca, a nas by\xc5\x82o a\xc5\xbc pi\xc4\x99ciu, wi\xc4\x99c sko\xc5\x84czylo si\xc4\x99 na wsp\xc3\xb3\xc5\x82nym graniu",
   "Mia\xc5\x82em do zrobienia przygotowanie z j\xc4\x99zyka polskiego, trzy zadania z matematyki oraz nauk\xc4\x99 na sprawdzian z historii", 
   "Mam ochot\xc4\x99 na kaw\xc4\x99, chyba jestem troszk\xc4\x99 zm\xc4\x99czony",
-  "Wyda\xc5\x82em dzisiaj 31 z\xc5\x82otych na obiad w restauracji, a potem jeszcze dziewi\xc4\x99tna\xc5\x9bcie na pami\xc4\x85tki"
+  "Wyda\xc5\x82em dzisiaj 31 z\xc5\x82otych na obiad w restauracji, a potem jeszcze dziewi\xc4\x99tna\xc5\x9bcie na pami\xc4\x85tki",
+  "Mia\xc5\x82em 5 z\xc5\x82otych. Chleb kosztowa\xc5\x82 2 z\xc5\x82ote, a bu\xc5\x82ki 60 groszy sztuka. Kupi\xc5\x82em chleb.",
+  "Wczoraj wieczorem um\xc3\xb3wi\xc5\x82em si\xc4\x99 na kaw\xc4\x99 z moimi znajomymi, Janem, Kasi\xc4\x85, Adamem, Zosi\xc4\x85, Hani\xc4\x85 i Adrianem.",
+  "Jestem wielkim fanem \xc5\x82esternxc3\xb3w z Klintem Ist\xc5\x82udem, ale ch\xc4\x99tnie p\xc3\xb3jd\xc4\x99 te\xc5\xbc na film akcji lub komedi\xc4\x99.",
+  "Byli\xc5\x9bmy wczoraj w zo. Jako pierwsze widzieli\xc5\x9bmy wilki. Potem ogl\xc4\x85dali\xc5\x9bmy nied\xc5\xbawiedzie, ma\xc5\x82py, \xc5\xbcyrafy i s\xc5\x82onie.",
+  "Byli\xc5\x9bmy wczoraj w zo. Jako pierwsze widzieli\xc5\x9bmy wilki. Potem ogl\xc4\x85dali\xc5\x9bmy nied\xc5\xbawiedzie, ma\xc5\x82py, \xc5\xbcyrafy i s\xc5\x82onie.",
+  "Johan Karl A\xc5\x82gust Radon by\xc5\x82 austriackim matematykiem, autorem wielu prac z zakresu teorii miary."
   ];
 
   var Global.ST_questions = [
@@ -74,7 +80,13 @@ SimonSays:
   "Ile by\xc5\x82o wolnych miejsc w kinie?", 
   "Z jakiego przedmiotu mia\xc5\x82em zrobi\xc4\x87 zadania?", 
   "Na co mam ochot\xc4\x99?",
-  "Ile wyda\xc5\x82em pieni\xc4\x99dzy?"
+  "Ile wyda\xc5\x82em pieni\xc4\x99dzy?",
+  "Na ile bu\xc5\x82ek wystarczy mi pieni\xc4\x99dzy?",
+  "Ile wymieni\xc5\x82em dziewczyn?",
+  "Jaki gatunek film\xc3\xb3w lubi\xc4\x99 najbardziej?",
+  "Kt\xc3\xb3re zwierz\xc4\x99ta widzieli\xc5\x9bmy jako pierwsze?",
+  "Ile gatunk\xc3\xb3w zwierz\xc4\x85t widzieli\xc5\x9bmy?",
+  "Z jakiego kraju pochodzi\xc5\x82?"
   ];
 
   var Global.ST_answers = [
@@ -86,10 +98,16 @@ SimonSays:
   "Dwa", 
   "Z matematyki", 
   "Na kaw\xc4\x99",
-  "Pi\xc4\x99\xc4\x87dziesi\xc4\x85t"
+  "Pi\xc4\x99\xc4\x87dziesi\xc4\x85t",
+  "Na pi\xc4\x99\xc4\x87",
+  "Trzy",
+  "\xc5\x82estern",
+  "Wilki",
+  "Cztery",
+  "Z Austrii"
   ];
 
-  var Global.ST_checkStoryState = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  var Global.ST_checkStoryState = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
  
 /////////////////////////////////////////////////
 //sekcja SimonSays
