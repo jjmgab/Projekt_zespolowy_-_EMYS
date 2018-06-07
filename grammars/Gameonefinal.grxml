@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<grammar version="1.0" xml:lang="pl-PL" root="rootAnswers" tag-format="semantics/1.0-literals" xmlns="http://www.w3.org/2001/06/grammar">
+  <rule id="rootAnswers">
+    <one-of>
+      <item>
+        <ruleref uri="#AnswersList"/>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="AnswersList" scope="private">
+    <one-of>
+      <item>
+        Jerzy<tag>JERZY</tag>
+      </item>
+      <item>
+        Odpychają się<tag>ODPYCHAJA</tag>
+      </item>
+      <item>
+        Odpychają<tag>ODPYCHAJA</tag>
+      </item>
+      <item>
+        Siedemdziesiąt pięć<tag>SIEDEMDZIESIATPIEC</tag>
+      </item>
+      <item>
+        Rtęć<tag>RTEC</tag>
+      </item>
+      <item>
+        pesymista<tag>PESYMISTA</tag>
+      </item>
+      <item>
+        Warszawa<tag>WARSZAWA</tag>
+      </item>
+      <item>
+        Warszawka<tag>WARSZAWA</tag>
+      </item>
+	  <item>
+		We włoszech<tag>WLOCHY</tag>
+	  </item>
+      <item>
+		Włochy<tag>WLOCHY</tag>
+	  </item>
+      <item>
+		Mięso wołowe<tag>WOLOWE</tag>
+	  </item>
+	  <item>
+		Wołowe<tag>WOLOWE</tag>
+	  </item>
+	  <item>
+		Małż<tag>MALZ</tag>
+	  </item>
+	  <item>
+		Małży<tag>MALZ</tag>
+	  </item>
+	  <item>
+		Narutowicz<tag>NARUTOWICZ</tag>
+	  </item>
+	  <item>
+		Gabriel Narutowicz<tag>NARUTOWICZ</tag>
+	  </item>
+	  <item>
+		Literatura<tag>LITERATURA</tag>
+	  </item>
+	  <item>
+		Literackiej<tag>LITERATURA</tag>
+	  </item>
+	  <item>
+		Prezydent<tag>PREZYDENT</tag>
+	  </item>
+	  <item>
+		Matematyka<tag>MATEMATYKA</tag>
+	  </item>
+	  <item>
+		Matematyce<tag>MATEMATYKA</tag>
+	  </item>
+	  <item>
+		W Brukseli<tag>BRUKSELA</tag>
+	  </item>
+	  <item>
+		Brukseli<tag>BRUKSELA</tag>
+	  </item>
+	  <item>
+		Bruksela<tag>BRUKSELA</tag>
+	  </item>
+	  <item>
+		Urugwaj<tag>URUGWAJ</tag>
+	  </item>
+	  <item>
+		Urugwaju<tag>URUGWAJ</tag>
+  	  </item>
+	  <item>
+		Bas<tag>BAS</tag>
+	  </item>
+	  <item>
+		W tysiąc dziewięćset pięćdziesiątym trzecim<tag>1953</tag>
+	  </item>
+	  <item>
+		W tysiąc dziewięćset pięćdziesiątym trzecim roku<tag>1953</tag>
+	  </item>
+	  <item>
+		Tysiąc dziewięćset pięćdziesiąty trzeci<tag>1953</tag>
+	  </item>
+	  <item>
+		Tysiąc dziewięćset pięćdziesiąty trzeci rok<tag>1953</tag>
+	  </item>
+	  <item>
+		Pięćdziesiąty trzeci rok<tag>1953</tag>
+	  </item>
+	 <item>
+		Pięćdziesiąty trzeci<tag>1953</tag>
+	 </item>
+	 <item>
+		Pięćdziesiątym trzecim<tag>1953</tag>
+	  </item>
+	  <item>
+		Pięćdziesiątym trzecim roku<tag>1953</tag>
+	  </item>
+	  <item>
+		Mars<tag>MARS</tag>
+	  </item>
+	  <item>
+		Nowym Jorku<tag>NOWYJORK</tag>
+	  </item>
+	  <item>
+		Nowy Jork<tag>NOWYJORK</tag>
+	  </item>
+	  <item>
+		Aria<tag>ARIA</tag>
+	  </item>
+	  <item>
+		Szydło<tag>SZYDLO</tag>
+	  </item>
+	  <item>
+		Z Indii<tag>INDIE</tag>
+	  </item>
+	  <item>
+		Indie<tag>INDIE</tag>
+	  </item>
+	  <item>
+		Indii<tag>INDIE</tag>
+	  </item>
+	  <item>
+		Mydle<tag>MYDLO</tag>
+	  </item>
+	  <item>
+		Niemcy<tag>NIEMCY</tag>
+	  </item>
+	  <item>
+		Z Niemiec<tag>NIEMCY</tag>
+	  </item>
+	  <item>
+		Niemiec<tag>NIEMCY</tag>
+	  </item>
+    </one-of>
+  </rule>
+
+
+</grammar>
