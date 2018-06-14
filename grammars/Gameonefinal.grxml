@@ -47,6 +47,15 @@
 		Wołowe<tag>WOLOWE</tag>
 	  </item>
 	  <item>
+		Wołowym<tag>WOLOWE</tag>
+	  </item>
+	  <item>
+		Wołowiną<tag>WOLOWE</tag>
+	  </item>
+	  <item>
+		Wołowina<tag>WOLOWE</tag>
+	  </item>
+	  <item>
 		Małż<tag>MALZ</tag>
 	  </item>
 	  <item>
@@ -149,7 +158,43 @@
 		Z Niemiec<tag>NIEMCY</tag>
 	  </item>
 	  <item>
-		Niemiec<tag>NIEMCY</tag>
+		Żużel<tag>ZUZEL</tag>
+	  </item>
+	  <item>
+		Minerałem<tag>MINERAL</tag>
+	  </item>
+	  <item>
+		Minerał<tag>MINERAL</tag>
+	  </item>
+	  <item>
+		Dejmos<tag>DEJMOS</tag>
+	  </item>
+	  <item>
+		Nowy Amsterdam<tag>NOWYAMSTERDAM</tag>
+	  </item>
+	  <item>
+		Wrocław<tag>WROCLAW</tag>
+	  </item>
+	  <item>
+		Wrocławia<tag>WROCLAW</tag>
+	  </item>
+	  <item>
+		Pireneje<tag>PIRENEJE</tag>
+	  </item>
+	  <item>
+		Azja<tag>AZJA</tag>
+	  </item>
+	  <item>
+		w Azji<tag>AZJA</tag>
+	  </item>
+	  <item>
+		Płock<tag>PLOCK</tag>
+	  </item>
+	  <item>
+		Płocku<tag>PLOCK</tag>
+	  </item>
+	  <item>
+		w Płocku<tag>PLOCK</tag>
 	  </item>
     </one-of>
   </rule>

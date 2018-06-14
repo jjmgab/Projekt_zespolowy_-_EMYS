@@ -59,16 +59,16 @@ SimonSays:
   "Uzbiera\xc5\x82y si\xc4\x99 dwa worki \xc5\x9bmieci, Marek mia\xc5\x82 je ju\xc5\xbc dawno wynie\xc5\x9b\xc4\x87", 
   "Wczoraj w sklepie widzia\xc5\x82em Ani\xc4\x99, star\xc4\x85 kole\xc5\xbcank\xc4\x99 z liceum.", 
   "Jaki\xc5\x9b tydzie\xc5\x84 temu kupi\xc5\x82em sobie ksi\xc4\x85\xc5\xbck\xc4\x99, jest \xc5\x9bwietna, opowiada o historii pewnego czarodzieja.", 
-  "Chcieli\xc5\x9bmy i\xc5\x9b\xc4\x87 wczoraj do kina ale by\xc5\x82y tylko dwa wolne miejsca, a nas by\xc5\x82o a\xc5\xbc pi\xc4\x99ciu, wi\xc4\x99c sko\xc5\x84czylo si\xc4\x99 na wsp\xc3\xb3\xc5\x82nym graniu",
+  "Chcieli\xc5\x9bmy i\xc5\x9b\xc4\x87 wczoraj do kina ale by\xc5\x82o tylko jedno wolne miejsce, a nas by\xc5\x82o a\xc5\xbc pi\xc4\x99ciu, wi\xc4\x99c sko\xc5\x84czylo si\xc4\x99 na wsp\xc3\xb3\xc5\x82nym graniu",
   "Mia\xc5\x82em do zrobienia przygotowanie z j\xc4\x99zyka polskiego, trzy zadania z matematyki oraz nauk\xc4\x99 na sprawdzian z historii", 
   "Mam ochot\xc4\x99 na kaw\xc4\x99, chyba jestem troszk\xc4\x99 zm\xc4\x99czony",
   "Wyda\xc5\x82em dzisiaj 31 z\xc5\x82otych na obiad w restauracji, a potem jeszcze dziewi\xc4\x99tna\xc5\x9bcie na pami\xc4\x85tki",
-  "Mia\xc5\x82em 5 z\xc5\x82otych. Chleb kosztowa\xc5\x82 2 z\xc5\x82ote, a bu\xc5\x82ki 60 groszy sztuka. Kupi\xc5\x82em chleb.",
-  "Wczoraj wieczorem um\xc3\xb3wi\xc5\x82em si\xc4\x99 na kaw\xc4\x99 z moimi znajomymi, Janem, Kasi\xc4\x85, Adamem, Zosi\xc4\x85, Hani\xc4\x85 i Adrianem.",
+  "Mia\xc5\x82em 5 z\xc5\x82otych. Chleb kosztowa\xc5\x82 2 z\xc5\x82ote, a bu\xc5\x82ki po z\xc5\x82ot\xc3\xb3wk\xc4\x99 sztuka. Kupi\xc5\x82em chleb.",
+  "Wczoraj wieczorem um\xc3\xb3wi\xc5\x82em si\xc4\x99 na kaw\xc4\x99 z moimi znajomymi, Janem, Adamem, Zosi\xc4\x85, Hani\xc4\x85 i Adrianem.",
   "Jestem wielkim fanem \xc5\x82estern\xc3\xb3w z Klintem Ist\xc5\x82udem, ale ch\xc4\x99tnie p\xc3\xb3jd\xc4\x99 te\xc5\xbc na film akcji lub komedi\xc4\x99.",
   "Byli\xc5\x9bmy wczoraj w zo. Jako pierwsze widzieli\xc5\x9bmy wilki. Potem ogl\xc4\x85dali\xc5\x9bmy nied\xc5\xbawiedzie, ma\xc5\x82py, \xc5\xbcyrafy i s\xc5\x82onie.",
   "Byli\xc5\x9bmy wczoraj w zo. Jako pierwsze widzieli\xc5\x9bmy wilki. Potem ogl\xc4\x85dali\xc5\x9bmy nied\xc5\xbawiedzie, ma\xc5\x82py, \xc5\xbcyrafy i s\xc5\x82onie.",
-  "Johan Karl A\xc5\x82gust Radon by\xc5\x82 austriackim matematykiem, autorem wielu prac z zakresu teorii miary."
+  "Johan Karl A\xc5\x82gust Radonn by\xc5\x82 austriackim matematykiem. autorem wielu prac z zakresu teorii miary."
   ];
 
   var Global.ST_questions = [
@@ -95,15 +95,15 @@ SimonSays:
   "Marek", 
   "Ania", 
   "Ksi\xc4\x85\xc5\xbca", 
-  "Dwa", 
+  "Jedno", 
   "Z matematyki", 
   "Na kaw\xc4\x99",
   "Pi\xc4\x99\xc4\x87dziesi\xc4\x85t",
-  "Na pi\xc4\x99\xc4\x87",
-  "Trzy",
+  "Na trzy",
+  "Dwie",
   "\xc5\x82estern",
   "Wilki",
-  "Cztery",
+  "Pi\xc4\x99\xc4\x87",
   "Z Austrii"
   ];
 
@@ -121,7 +121,7 @@ SimonSays:
 ];
 
   var Global.SS_yourTurn = [
-  "Teraz Ty! Podnie\xc5\x9b r\xc4\x99ce w kolejno\xc5\x9bci, jak\xc4\x85 Ci poda\xc5\x82em."
+  "Podnie\xc5\x9b r\xc4\x99ce w kolejno\xc5\x9bci, jak\xc4\x85 Ci poda\xc5\x82em. Teraz Ty!"
   ];
   
   var Global.SS_heyListen = [
@@ -215,8 +215,8 @@ SimonSays:
  var Global.D_compliment = [
   "Wi\xc4\x99c chod\xc5\xbamy na piwo!",
   "\xc5\x81adna dzi\xc5\x9b pogoda."
-];
-
+];
+
  var Global.D_help = "Jestem EMYS. Potrafi\xc4\x99 zagra\xc4\x87 w trzy gry. Sajmon m\xc3\xb3wi, historyjki oraz jeden z dziesi\xc4\x99ciu. Potrafi\xc4\x99 te\xc5\xbc poda\xc4\x87 godzin\xc4\x99.";
  
 };

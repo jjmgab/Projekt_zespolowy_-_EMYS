@@ -73,7 +73,7 @@ do (Global) {
   var _PlayerNext_PlayerVolume		= 60;	// Universal player volume in %
   var _PlayerNext_MusicPlayerVolume	= 15;	// Music player volume in %
   var _PlayerNext_MicRecordLevel	= 30;	// Microphone input level in %
-  var _PlayerNext_KinectRecordLevel	= 80;	// Kinect mic array input level in%
+  var _PlayerNext_KinectRecordLevel	= 30;	// Kinect mic array input level in%
   //
   ////////////////////////////////////////////////////////
   //
@@ -97,7 +97,7 @@ do (Global) {
   //
   ////////////////////////////////////////////////////////
   // KINECT SETTINGS
-  var _Kinect_Offset			= [0,-0.25,0,0,20];
+  var _Kinect_Offset			= [0,-0.25,0,0,15];
 							// [x,y,z,yaw,pitch] - kinect offest to the eyes in [m,deg]
 							// pitch offset moves Kinect mechanism
   var _Kinect_FaceTrackingEnable	= true;		// true or false, due to significant CPU consumption, anytime you can pause/resume...
